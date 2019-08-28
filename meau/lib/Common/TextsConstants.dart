@@ -1,0 +1,1 @@
+const  String WelcomeText = 'Bem vindo ao Meau!\nAqui você pode adotar, doar e ajudar\ncães e gatos com facilidade.\nQual o seu interresse?';
