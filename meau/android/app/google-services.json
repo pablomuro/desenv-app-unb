@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "146281546127",
+    "firebase_url": "https://app1-desenv-apps-unb.firebaseio.com",
+    "project_id": "app1-desenv-apps-unb",
+    "storage_bucket": "app1-desenv-apps-unb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:146281546127:android:28d621e67bcfd200",
+        "android_client_info": {
+          "package_name": "com.example.unb.devApp.meau"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "146281546127-bfqokecjg2sijsa6d38r3n22qmta6h96.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-oPCibbmZt5CY9ohKkIlvZiGC8InB-bM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "146281546127-bfqokecjg2sijsa6d38r3n22qmta6h96.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

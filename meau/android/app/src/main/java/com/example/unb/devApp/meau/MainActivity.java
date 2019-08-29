@@ -1,4 +1,4 @@
-package com.example.app;
+package com.example.unb.devApp.meau;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
