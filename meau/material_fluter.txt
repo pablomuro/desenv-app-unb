@@ -1,0 +1,22 @@
+Flutter
+https://www.flutterbrasil.com
+https://www.youtube.com/watch?v=pTJJsmejUOQ
+https://davesbalthazar.com.br/tag/flutter-tutorial/
+https://www.youtube.com/flutterdev
+http://fluttercrashcourse.com/courses/basics
+http://fluttercrashcourse.com/courses/juniordevs
+https://medium.com/flutter-community/flutter-code-organization-de3a4c219149
+https://hackernoon.com/scalable-app-structure-in-flutter-dad61a4bc389
+-- navigation
+https://medium.com/flutter-community/clean-navigation-in-flutter-using-generated-routes-891bd6e000df
+https://medium.com/flutter-community/flutter-navigation-cheatsheet-a-guide-to-named-routing-dc642702b98c
+https://flutter.dev/docs/cookbook/navigation/passing-data
+https://medium.com/flutter-community/flutter-push-pop-push-1bb718b13c31
+https://www.youtube.com/watch?v=JWuXj0BY_s4
+-- desktop run
+https://medium.com/flutter-community/flutter-for-desktop-create-and-run-a-desktop-application-ebeb1604f1e0
+https://github.com/google/flutter-desktop-embedding
+-- block
+https://www.youtube.com/watch?v=pPCshftjE1c
+https://www.youtube.com/watch?v=cdl-41gUcGY
+https://www.youtube.com/watch?v=fahC3ky_zW0
