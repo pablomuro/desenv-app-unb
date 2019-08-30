@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:meau/Common/AssetsConstants.dart';
 import 'package:meau/Common/TextsConstants.dart';
 import 'package:meau/style.dart';
+import 'package:meau/widgets/AppDrawer/AppDrawer.dart';
 import 'package:meau/widgets/YellownFlatButton.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -14,7 +15,7 @@ class HomeScreen extends StatelessWidget {
             backgroundColor: Colors.white,
             elevation: 0,
             iconTheme: IconThemeData(color: DefaultGrennColor)),
-        drawer: Drawer(),
+        drawer: AppDrawer(),
         body: Container(
             child: Center(
               child:Column(
