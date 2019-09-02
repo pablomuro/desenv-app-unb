@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter/painting.dart';
+
 const Duration _kExpand = Duration(milliseconds: 200);
 
 class CustomExpansionTile extends StatefulWidget {
@@ -135,16 +137,15 @@ class _CustomExpansionTileState extends State<CustomExpansionTile>
 
   @override
   void didChangeDependencies() {
-    // TODO Tema do CustomExpansionTitleComentado
-    // final ThemeData theme = Theme.of(context);
-    // _borderColorTween..end = theme.dividerColor;
-    // _headerColorTween
-    //   ..begin = theme.textTheme.subhead.color
-    //   ..end = theme.accentColor;
-    // _iconColorTween
-    //   ..begin = theme.unselectedWidgetColor
-    //   ..end = theme.accentColor;
-    // _backgroundColorTween..end = widget.backgroundColor;
+    final ThemeData theme = Theme.of(context);
+    _borderColorTween..end = theme.dividerColor;
+    _headerColorTween
+      ..begin = theme.textTheme.subhead.color
+      ..end = theme.accentColor;
+    _iconColorTween
+      ..begin = theme.unselectedWidgetColor
+      ..end = theme.accentColor;
+    _backgroundColorTween..end = widget.backgroundColor;
     super.didChangeDependencies();
   }
 

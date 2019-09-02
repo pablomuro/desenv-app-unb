@@ -71,8 +71,8 @@ class _AppDrawerState extends State<AppDrawer> {
                 )
               : SizedBox(height: 0, width: 0),
           Container(
-            color: DefaultLightYellowColor,
-            child: CustomExpansionTile(
+            child: ExpansionTile(
+              backgroundColor: DefaultLightYellowColor,
               title: Container(
                 child: Row(
                   children: [
