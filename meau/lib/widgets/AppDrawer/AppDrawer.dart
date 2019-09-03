@@ -191,7 +191,7 @@ class DrawerListItem extends StatelessWidget {
           child: ListTile(
             contentPadding: EdgeInsets.zero,
             title: Padding(
-              padding: const EdgeInsets.only(left: 48.0),
+              padding: text != 'Sair' ? EdgeInsets.only(left: 48.0): EdgeInsets.zero,
               child: Container(
                   decoration: BoxDecoration(
                     border: Border(
@@ -201,7 +201,7 @@ class DrawerListItem extends StatelessWidget {
                               : Colors.transparent),
                     ),
                   ),
-                  padding: const EdgeInsets.only(top: 16.0, bottom: 20.0),
+                  padding: text != 'Sair' ? const EdgeInsets.only(top: 16.0, bottom: 20.0) : EdgeInsets.zero,
                   child: GrayText(text, textAlign: textAlign)),
             ),
           ),
