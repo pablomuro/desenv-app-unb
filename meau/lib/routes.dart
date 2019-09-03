@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meau/screens/homeScreen.dart';
+import 'package:meau/screens/legalScreen/legalScreen.dart';
 import 'package:meau/screens/splashScreen.dart';
 
 class Router {
@@ -11,7 +12,7 @@ class Router {
     switch (settings.name) {
       case splashRoute:
         // var data = settings.arguments as String;
-        return MaterialPageRoute(builder: (_) => SplashScreen());
+        return MaterialPageRoute(builder: (_) => LegalScreen());
       case homeRoute:
         // var data = settings.arguments as String;
         return MaterialPageRoute(builder: (_) => HomeScreen());
