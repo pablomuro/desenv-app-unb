@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meau/screens/legalScreen/texts.dart';
 import 'package:meau/style.dart';
+import 'package:meau/widgets/AppDrawer/AppDrawer.dart';
 
 class LegalScreen extends StatelessWidget {
   static const BottomSpace = 8.0;
@@ -15,7 +16,7 @@ class LegalScreen extends StatelessWidget {
             backgroundColor: DefaultGrennColor,
             elevation: 2,
             iconTheme: IconThemeData(color: DefaultButtonColor)),
-        drawer: Drawer(),
+        drawer: AppDrawer(),
         body: Container(
             child: ListView(children: [
           Container(

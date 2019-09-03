@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/widgets.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:meau/style.dart';
 
 class _AccountPictures extends StatelessWidget {
   const _AccountPictures({
@@ -171,7 +172,7 @@ class _AccountDetailsState extends State<_AccountDetails>
                 angle: _animation.value * math.pi,
                 child: Icon(
                   Icons.arrow_drop_down,
-                  color: Colors.white,
+                  color: DefaultTextColor,
                   semanticLabel: widget.isOpen
                       ? localizations.hideAccountsLabel
                       : localizations.showAccountsLabel,
