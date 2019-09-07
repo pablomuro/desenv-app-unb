@@ -1,4 +1,4 @@
-const String TermsHeaderText = "TERMO DE RESPONSABILIDADE DA ADOÇÃO";
+const String TermsHeaderText = "TERMO DE ADOÇÃO E GUARDA RESPONSÁVEL";
 const String TermsSubHeader1Text = "COMPROMETIMENTOS:";
 const String TermsSubHeader2Text = "CIÊNCIA:";
 const String TermsArticleDescription1Text ="""
