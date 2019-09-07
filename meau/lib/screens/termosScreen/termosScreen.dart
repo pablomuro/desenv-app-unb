@@ -3,7 +3,7 @@ import 'package:meau/screens/termosScreen/texts.dart';
 import 'package:meau/style.dart';
 import 'package:meau/widgets/AppDrawer/AppDrawer.dart';
 
-class termosScreen extends StatelessWidget {
+class TermosScreen extends StatelessWidget {
   static const BottomSpace = 8.0;
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class termosScreen extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.only(bottom: 24.0),
                   child: Text(
-                    LegalHeaderText,
+                    TermsHeaderText,
                     style: TextStyle(
                         fontSize: MediumTextSize, color: DefaultButtonColor),
                   ),
@@ -35,76 +35,36 @@ class termosScreen extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.only(bottom: BottomSpace),
                   child: Text(
-                    LegalSubHeaderText,
+                    TermsSubHeader1Text,
                     style: TextStyle(
-                        fontSize: SmallTextSize, color: DefaultStrongreGrennColor),
+                        fontSize: MediumTextSize, color: DefaultStrongreGrennColor),
                   ),
                 ),
                 Container(
                   padding: const EdgeInsets.only(bottom: BottomSpace),
                   child: RichText(
                     text: TextSpan(
-                      text: FourthArticleText,
+                      text: TermsArticleDescription1Text,
                       style: TextStyle(
                           color: DefaultStrongreGrennColor, fontSize: TextSize14),
-                      children: [
-                        TextSpan(
-                          text: FourthArticleDescriptionText,
-                          style: TextStyle(
-                              color: DefaultTextColor, fontSize: TextSize14),
-                        )
-                      ],
                     ),
                   ),
                 ),
                 Container(
                   padding: const EdgeInsets.only(bottom: BottomSpace),
-                  child: RichText(
-                    text: TextSpan(
-                      text: FiftArticleText,
-                      style: TextStyle(
-                          color: DefaultStrongreGrennColor, fontSize: TextSize14),
-                      children: [
-                        TextSpan(
-                          text: FiftArticleDescriptionText,
-                          style: TextStyle(
-                              color: DefaultTextColor, fontSize: TextSize14),
-                        )
-                      ],
-                    ),
+                  child: Text(
+                    TermsSubHeader2Text,
+                    style: TextStyle(
+                        fontSize: MediumTextSize, color: DefaultStrongreGrennColor),
                   ),
                 ),
                 Container(
                   padding: const EdgeInsets.only(bottom: BottomSpace),
                   child: RichText(
                     text: TextSpan(
-                      text: SixthArticleText,
+                      text: TermsArticleDescription2Text,
                       style: TextStyle(
                           color: DefaultStrongreGrennColor, fontSize: TextSize14),
-                      children: [
-                        TextSpan(
-                          text: SixthArticleDescriptionText,
-                          style: TextStyle(
-                              color: DefaultTextColor, fontSize: TextSize14),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.only(bottom: BottomSpace),
-                  child: RichText(
-                    text: TextSpan(
-                      text: SeventhArticleText,
-                      style: TextStyle(
-                          color: DefaultStrongreGrennColor, fontSize: TextSize14),
-                      children: [
-                        TextSpan(
-                          text: SeventArticleDescriptionText,
-                          style: TextStyle(
-                              color: DefaultTextColor, fontSize: TextSize14),
-                        )
-                      ],
                     ),
                   ),
                 ),

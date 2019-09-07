@@ -130,7 +130,7 @@ class _AppDrawerState extends State<AppDrawer> {
               DrawerListItem(
                 text: 'Termos de adoção',
                 onTap: () {
-                  Navigator.pushNamed(context, Router.legalRoute);
+                  Navigator.pushNamed(context, Router.termosRoute);
                 },
               ),
               DrawerListItem(
