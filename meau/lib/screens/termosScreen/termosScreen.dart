@@ -27,7 +27,7 @@ class TermosScreen extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.only(bottom: 24.0),
                   child: Text(
-                    TermsHeaderText,
+                    TermosHeaderText,
                     style: TextStyle(
                         fontSize: MediumTextSize, color: DefaultButtonColor),
                   ),
@@ -35,7 +35,7 @@ class TermosScreen extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.only(bottom: BottomSpace),
                   child: Text(
-                    TermsSubHeader1Text,
+                    TermosSubHeader1Text,
                     style: TextStyle(
                         fontSize: MediumTextSize, color: DefaultStrongreGrennColor),
                   ),
@@ -44,7 +44,7 @@ class TermosScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: BottomSpace),
                   child: RichText(
                     text: TextSpan(
-                      text: TermsArticleDescription1Text,
+                      text: TermosArticleDescription1Text,
                       style: TextStyle(
                           color: DefaultStrongreGrennColor, fontSize: TextSize14),
                     ),
@@ -53,7 +53,7 @@ class TermosScreen extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.only(bottom: BottomSpace),
                   child: Text(
-                    TermsSubHeader2Text,
+                    TermosSubHeader2Text,
                     style: TextStyle(
                         fontSize: MediumTextSize, color: DefaultStrongreGrennColor),
                   ),
@@ -62,7 +62,7 @@ class TermosScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: BottomSpace),
                   child: RichText(
                     text: TextSpan(
-                      text: TermsArticleDescription2Text,
+                      text: TermosArticleDescription2Text,
                       style: TextStyle(
                           color: DefaultStrongreGrennColor, fontSize: TextSize14),
                     ),

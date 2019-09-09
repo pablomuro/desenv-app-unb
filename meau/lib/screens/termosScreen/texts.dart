@@ -1,7 +1,7 @@
-const String TermsHeaderText = "TERMO DE ADOÇÃO E GUARDA RESPONSÁVEL";
-const String TermsSubHeader1Text = "COMPROMETIMENTOS:";
-const String TermsSubHeader2Text = "CIÊNCIA:";
-const String TermsArticleDescription1Text ="""
+const String TermosHeaderText = "TERMO DE ADOÇÃO E GUARDA RESPONSÁVEL";
+const String TermosSubHeader1Text = "COMPROMETIMENTOS:";
+const String TermosSubHeader2Text = "CIÊNCIA:";
+const String TermosArticleDescription1Text ="""
 Me comprometo a:
 1. Garantir o bem-estar deste animal, respeitando suas características e zelando pelas suas necessidades psicológicas e físicas;
 2. Garantir sua saúde física fornecendo abrigo, alimento adequado, higiene, vacinas e levando-o regularmente ao veterinário;
@@ -16,7 +16,7 @@ Me comprometo a:
 11. Comunicar qualquer outro destino que envolva o animal, tais como desaparecimento ou morte;
 12. Permitir a visita do protetor responsável pela adoção ou antigo dono até a completa adaptação do animal (6 meses).""";
 
-const String TermsArticleDescription2Text = """
+const String TermosArticleDescription2Text = """
 Estou ciente de que:
 1. Um cão ou gato pode viver até 15 anos ou mais, e durante todo este tempo serei responsável pelo seu bem-estar, principalmente durante sua velhice;
 2. O não cumprimento dos itens acima poderá ser interpretado como maus-tratos, o que acarretará a retirada do animal pelo doador responsável a qualquer tempo;
