@@ -47,7 +47,7 @@ class TermosScreen extends StatelessWidget {
                     text: TextSpan(
                       text: TermosArticleDescription1Text,
                       style: TextStyle(
-                          color: DefaultStrongreGrennColor,
+                          color:DefaultTextColor,
                           fontSize: TextSize14),
                     ),
                   ),
@@ -67,7 +67,7 @@ class TermosScreen extends StatelessWidget {
                     text: TextSpan(
                       text: TermosArticleDescription2Text,
                       style: TextStyle(
-                          color: DefaultStrongreGrennColor,
+                          color: DefaultTextColor,
                           fontSize: TextSize14),
                     ),
                   ),
