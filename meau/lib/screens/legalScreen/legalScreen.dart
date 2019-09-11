@@ -37,7 +37,8 @@ class LegalScreen extends StatelessWidget {
                   child: Text(
                     LegalSubHeaderText,
                     style: TextStyle(
-                        fontSize: SmallTextSize, color: DefaultStrongreGrennColor),
+                        fontSize: SmallTextSize,
+                        color: DefaultStrongreGrennColor),
                   ),
                 ),
                 Container(
@@ -46,7 +47,8 @@ class LegalScreen extends StatelessWidget {
                     text: TextSpan(
                       text: FourthArticleText,
                       style: TextStyle(
-                          color: DefaultStrongreGrennColor, fontSize: TextSize14),
+                          color: DefaultStrongreGrennColor,
+                          fontSize: TextSize14),
                       children: [
                         TextSpan(
                           text: FourthArticleDescriptionText,
@@ -63,7 +65,8 @@ class LegalScreen extends StatelessWidget {
                     text: TextSpan(
                       text: FiftArticleText,
                       style: TextStyle(
-                          color: DefaultStrongreGrennColor, fontSize: TextSize14),
+                          color: DefaultStrongreGrennColor,
+                          fontSize: TextSize14),
                       children: [
                         TextSpan(
                           text: FiftArticleDescriptionText,
@@ -80,7 +83,8 @@ class LegalScreen extends StatelessWidget {
                     text: TextSpan(
                       text: SixthArticleText,
                       style: TextStyle(
-                          color: DefaultStrongreGrennColor, fontSize: TextSize14),
+                          color: DefaultStrongreGrennColor,
+                          fontSize: TextSize14),
                       children: [
                         TextSpan(
                           text: SixthArticleDescriptionText,
@@ -97,7 +101,8 @@ class LegalScreen extends StatelessWidget {
                     text: TextSpan(
                       text: SeventhArticleText,
                       style: TextStyle(
-                          color: DefaultStrongreGrennColor, fontSize: TextSize14),
+                          color: DefaultStrongreGrennColor,
+                          fontSize: TextSize14),
                       children: [
                         TextSpan(
                           text: SeventArticleDescriptionText,

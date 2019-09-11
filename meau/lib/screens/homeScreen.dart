@@ -6,7 +6,6 @@ import 'package:meau/widgets/AppDrawer/AppDrawer.dart';
 import 'package:meau/widgets/YellownFlatButton.dart';
 
 class HomeScreen extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,44 +17,41 @@ class HomeScreen extends StatelessWidget {
         drawer: AppDrawer(),
         body: Container(
             child: Center(
-              child:Column(
-                children: [
-                  Text('Olá!',style: TextWelcomeStyle),
-                  SizedBox(height: 52.0),
-                  Text(
-                    WelcomeText,
-                    textAlign: TextAlign.center,
-                    ),
-                  SizedBox(height: 48.0),
-                  YellownFlatButton(
-                    onPressed: () => null,
-                    text: 'Adotar',
-                  ),
-                  SizedBox(height: 12.0),
-                  YellownFlatButton(
-                    onPressed: () => null,
-                    text: 'Ajudar',
-                  ),
-                  SizedBox(height: 12.0),
-                  YellownFlatButton(
-                    onPressed: () => null,
-                    text: 'Cadastrar Animal',
-                  ),
-                  SizedBox(height: 44.0),
-                  GestureDetector(
-                    onTap: () =>  null,
-                    child: Text('login' ,style: TextStyle(color: DefaultGrennColor, fontSize: MediumTextSize)),
-                  ),
-                  SizedBox(height: 68.0),
-                  SizedBox(
-                    width: 122.0,
-                    height: 44.0,
-                    child: Image.asset(MeuaLogoGreen),
-                  ),
-                ]
-              )
-          )
-        )
-    );
+                child: Column(children: [
+          Text('Olá!', style: TextWelcomeStyle),
+          SizedBox(height: 52.0),
+          Text(
+            WelcomeText,
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(height: 48.0),
+          YellownFlatButton(
+            onPressed: () => null,
+            text: 'Adotar',
+          ),
+          SizedBox(height: 12.0),
+          YellownFlatButton(
+            onPressed: () => null,
+            text: 'Ajudar',
+          ),
+          SizedBox(height: 12.0),
+          YellownFlatButton(
+            onPressed: () => null,
+            text: 'Cadastrar Animal',
+          ),
+          SizedBox(height: 44.0),
+          GestureDetector(
+            onTap: () => null,
+            child: Text('login',
+                style: TextStyle(
+                    color: DefaultGrennColor, fontSize: MediumTextSize)),
+          ),
+          SizedBox(height: 68.0),
+          SizedBox(
+            width: 122.0,
+            height: 44.0,
+            child: Image.asset(MeuaLogoGreen),
+          ),
+        ]))));
   }
 }

@@ -37,7 +37,8 @@ class TermosScreen extends StatelessWidget {
                   child: Text(
                     TermosSubHeader1Text,
                     style: TextStyle(
-                        fontSize: MediumTextSize, color: DefaultStrongreGrennColor),
+                        fontSize: MediumTextSize,
+                        color: DefaultStrongreGrennColor),
                   ),
                 ),
                 Container(
@@ -46,7 +47,8 @@ class TermosScreen extends StatelessWidget {
                     text: TextSpan(
                       text: TermosArticleDescription1Text,
                       style: TextStyle(
-                          color: DefaultStrongreGrennColor, fontSize: TextSize14),
+                          color: DefaultStrongreGrennColor,
+                          fontSize: TextSize14),
                     ),
                   ),
                 ),
@@ -55,7 +57,8 @@ class TermosScreen extends StatelessWidget {
                   child: Text(
                     TermosSubHeader2Text,
                     style: TextStyle(
-                        fontSize: MediumTextSize, color: DefaultStrongreGrennColor),
+                        fontSize: MediumTextSize,
+                        color: DefaultStrongreGrennColor),
                   ),
                 ),
                 Container(
@@ -64,7 +67,8 @@ class TermosScreen extends StatelessWidget {
                     text: TextSpan(
                       text: TermosArticleDescription2Text,
                       style: TextStyle(
-                          color: DefaultStrongreGrennColor, fontSize: TextSize14),
+                          color: DefaultStrongreGrennColor,
+                          fontSize: TextSize14),
                     ),
                   ),
                 ),

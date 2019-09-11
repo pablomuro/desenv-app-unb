@@ -1,7 +1,7 @@
 const String TermosHeaderText = "TERMO DE ADOÇÃO E GUARDA RESPONSÁVEL";
 const String TermosSubHeader1Text = "COMPROMETIMENTOS:";
 const String TermosSubHeader2Text = "CIÊNCIA:";
-const String TermosArticleDescription1Text ="""
+const String TermosArticleDescription1Text = """
 Me comprometo a:
 1. Garantir o bem-estar deste animal, respeitando suas características e zelando pelas suas necessidades psicológicas e físicas;
 2. Garantir sua saúde física fornecendo abrigo, alimento adequado, higiene, vacinas e levando-o regularmente ao veterinário;

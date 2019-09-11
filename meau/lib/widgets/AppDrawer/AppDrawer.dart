@@ -150,7 +150,7 @@ class _AppDrawerState extends State<AppDrawer> {
               DrawerListItem(
                   text: 'Privacidade',
                   onTap: () {
-                    // Update the state of the app.
+                    Navigator.pushNamed(context, Router.privacidadeRoute);
                   },
                   hasBorder: false)
             ],
@@ -191,7 +191,9 @@ class DrawerListItem extends StatelessWidget {
           child: ListTile(
             contentPadding: EdgeInsets.zero,
             title: Padding(
-              padding: text != 'Sair' ? EdgeInsets.only(left: 48.0): EdgeInsets.zero,
+              padding: text != 'Sair'
+                  ? EdgeInsets.only(left: 48.0)
+                  : EdgeInsets.zero,
               child: Container(
                   decoration: BoxDecoration(
                     border: Border(
@@ -201,7 +203,9 @@ class DrawerListItem extends StatelessWidget {
                               : Colors.transparent),
                     ),
                   ),
-                  padding: text != 'Sair' ? const EdgeInsets.only(top: 16.0, bottom: 20.0) : EdgeInsets.zero,
+                  padding: text != 'Sair'
+                      ? const EdgeInsets.only(top: 16.0, bottom: 20.0)
+                      : EdgeInsets.zero,
                   child: GrayText(text, textAlign: textAlign)),
             ),
           ),
