@@ -23,3 +23,8 @@ https://www.youtube.com/watch?v=fahC3ky_zW0
 https://www.didierboelens.com/2018/06/widget---state---context---inheritedwidget/
 https://www.youtube.com/watch?v=yr8F2S3Amas&list=PLjxrf2q8roU3ahJVrSgAnPjzkpGmL9Czl&index=2
 https://www.youtube.com/watch?v=cdl-41gUcGY
+https://balta.io/blog/flutter-bloc-provider-state-management
+https://medium.com/@fellipemalta/arquitetura-bloc-business-logic-component-d08de7e8bd3
+http://flutterdevs.com/blog/bloc-pattern-in-flutter-part-1/
+https://www.flutterbrasil.com/read-blog/20_business-logic-component-bloc.html
+
