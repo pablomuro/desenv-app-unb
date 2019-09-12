@@ -27,4 +27,10 @@ https://balta.io/blog/flutter-bloc-provider-state-management
 https://medium.com/@fellipemalta/arquitetura-bloc-business-logic-component-d08de7e8bd3
 http://flutterdevs.com/blog/bloc-pattern-in-flutter-part-1/
 https://www.flutterbrasil.com/read-blog/20_business-logic-component-bloc.html
+--- flutter firebase auth ----
+https://medium.com/flutterpub/flutter-how-to-do-user-login-with-firebase-a6af760b14d5
+https://www.youtube.com/watch?v=OlcYP6UXlm8
+https://heartbeat.fritz.ai/firebase-user-authentication-in-flutter-1635fb175675
+https://fireship.io/lessons/flutter-firebase-google-oauth-firestore/
+https://dev.to/aaronksaunders/simple-firebase-login-flow-in-flutter-now-firebase-23nk
 
