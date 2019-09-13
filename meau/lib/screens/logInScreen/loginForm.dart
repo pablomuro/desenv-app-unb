@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meau/routes.dart';
 
 
 class LoginForm extends StatefulWidget {
@@ -36,9 +37,9 @@ class LoginFormState extends State<LoginForm> {
               child: RaisedButton(
                   child: Text('ENTRAR'),
                   onPressed: () {
+                    Navigator.pushNamed(context, Router.registerRoute);
                     if (_formKey.currentState.validate()) {
-                      Scaffold.of(context).showSnackBar(
-                          SnackBar(content: Text('Processing Data')));
+                      // Navigator.pushNamed(context, Router.registerRoute);
                     }
                   })),
         ]));
