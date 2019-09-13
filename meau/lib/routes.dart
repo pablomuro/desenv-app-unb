@@ -5,6 +5,7 @@ import 'package:meau/screens/termosScreen/termosScreen.dart';
 import 'package:meau/screens/privacidadeScreen/privacidadeScreen.dart';
 import 'package:meau/screens/dicasScreen/dicasScreen.dart';
 import 'package:meau/screens/splashScreen.dart';
+import 'package:meau/screens/logInScreen/logInScreen.dart';
 
 class Router {
   static const String splashRoute = '/';
@@ -25,7 +26,7 @@ class Router {
         return MaterialPageRoute(builder: (_) => HomeScreen());
       case loginRoute:
         // var data = settings.arguments as String;
-        return MaterialPageRoute(builder: (_) => HomeScreen());
+        return MaterialPageRoute(builder: (_) => LogInScreen());
       case legalRoute:
         // var data = settings.arguments as String;
         return MaterialPageRoute(builder: (_) => LegalScreen());

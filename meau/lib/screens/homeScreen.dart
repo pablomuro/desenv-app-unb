@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meau/Common/AssetsConstants.dart';
 import 'package:meau/Common/TextsConstants.dart';
+import 'package:meau/routes.dart';
 import 'package:meau/style.dart';
 import 'package:meau/widgets/AppDrawer/AppDrawer.dart';
 import 'package:meau/widgets/YellownFlatButton.dart';
@@ -42,7 +43,7 @@ class HomeScreen extends StatelessWidget {
             ),
             SizedBox(height: 44.0),
             GestureDetector(
-              onTap: () => null,
+              onTap: () => Navigator.pushNamed(context, Router.loginRoute),
               child: Text('login',
                   style: TextStyle(
                       color: DefaultGrennColor, fontSize: MediumTextSize)),
