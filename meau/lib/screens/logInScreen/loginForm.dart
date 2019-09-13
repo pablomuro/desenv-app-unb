@@ -22,18 +22,14 @@ class LoginFormState extends State<LoginForm> {
             ),
             validator: userNameValidator,
           ),
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 10.0),
-          ),
+          SizedBox(height: 20.0),
           TextFormField(
             decoration: InputDecoration(
               hintText: 'Senha',
             ),
             validator: userNameValidator,
           ),
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 26.0),
-          ),
+          SizedBox(height: 52.0),
           Container(
               width: 232.0,
               height: 40.0,

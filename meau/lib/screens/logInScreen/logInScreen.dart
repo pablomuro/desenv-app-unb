@@ -25,13 +25,9 @@ class LogInScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                  padding: EdgeInsets.only(top: 64),
-                ),
+                SizedBox(height: 64.0),
                 LoginForm(),
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: 36.0),
-                ),
+                SizedBox(height: 72.0),
                 Container(
                     width: 232.0,
                     height: 40.0,
@@ -44,9 +40,7 @@ class LogInScreen extends StatelessWidget {
                       ),
                       onPressed: () => null,
                     )),
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: 4.0),
-                ),
+                SizedBox(height: 8.0),
                 Container(
                     width: 232.0,
                     height: 40.0,
