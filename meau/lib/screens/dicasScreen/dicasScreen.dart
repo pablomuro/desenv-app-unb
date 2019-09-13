@@ -37,7 +37,8 @@ class DicasScreen extends StatelessWidget {
                   child: Text(
                     DicasSubHeader1Text,
                     style: TextStyle(
-                        fontSize: MediumTextSize, color: DefaultStrongreGrennColor),
+                        fontSize: MediumTextSize,
+                        color: DefaultStrongreGrennColor),
                   ),
                 ),
                 Container(
@@ -55,7 +56,8 @@ class DicasScreen extends StatelessWidget {
                   child: Text(
                     DicasSubHeader1Text,
                     style: TextStyle(
-                        fontSize: MediumTextSize, color: DefaultStrongreGrennColor),
+                        fontSize: MediumTextSize,
+                        color: DefaultStrongreGrennColor),
                   ),
                 ),
                 Container(
@@ -73,7 +75,8 @@ class DicasScreen extends StatelessWidget {
                   child: Text(
                     DicasSubHeader2Text,
                     style: TextStyle(
-                        fontSize: MediumTextSize, color: DefaultStrongreGrennColor),
+                        fontSize: MediumTextSize,
+                        color: DefaultStrongreGrennColor),
                   ),
                 ),
                 Container(
@@ -91,7 +94,8 @@ class DicasScreen extends StatelessWidget {
                   child: Text(
                     DicasSubHeader3Text,
                     style: TextStyle(
-                        fontSize: MediumTextSize, color: DefaultStrongreGrennColor),
+                        fontSize: MediumTextSize,
+                        color: DefaultStrongreGrennColor),
                   ),
                 ),
                 Container(
