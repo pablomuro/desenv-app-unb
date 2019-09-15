@@ -4,6 +4,7 @@ import 'package:meau/screens/legalScreen/legalScreen.dart';
 import 'package:meau/screens/termosScreen/termosScreen.dart';
 import 'package:meau/screens/privacidadeScreen/privacidadeScreen.dart';
 import 'package:meau/screens/dicasScreen/dicasScreen.dart';
+import 'package:meau/screens/eventosScreen/eventosScreen.dart';
 import 'package:meau/screens/splashScreen.dart';
 
 class Router {
@@ -14,6 +15,7 @@ class Router {
   static const String termosRoute = '/termos';
   static const String privacidadeRoute = '/privacidade';
   static const String dicasRoute = '/dicas';
+  static const String eventosRoute = '/eventos';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -35,9 +37,12 @@ class Router {
       case privacidadeRoute:
         // var data = settings.arguments as String;
         return MaterialPageRoute(builder: (_) => PrivacidadeScreen());
-         case dicasRoute:
+      case dicasRoute:
         // var data = settings.arguments as String;
         return MaterialPageRoute(builder: (_) => DicasScreen());
+      case eventosRoute:
+        // var data = settings.arguments as String;
+        return MaterialPageRoute(builder: (_) => EventosScreen());
       default:
         // var data = settings.arguments as String;
         return MaterialPageRoute(builder: (_) => HomeScreen());

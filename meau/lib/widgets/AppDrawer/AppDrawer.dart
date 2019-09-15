@@ -118,7 +118,7 @@ class _AppDrawerState extends State<AppDrawer> {
               DrawerListItem(
                 text: 'Eventos',
                 onTap: () {
-                  // Update the state of the app.
+                  Navigator.pushNamed(context, Router.eventosRoute);
                 },
               ),
               DrawerListItem(
