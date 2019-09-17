@@ -6,6 +6,7 @@ import 'package:meau/screens/privacidadeScreen/privacidadeScreen.dart';
 import 'package:meau/screens/dicasScreen/dicasScreen.dart';
 import 'package:meau/screens/splashScreen.dart';
 import 'package:meau/screens/cadastroAnimalScreen/cadastroAnimal.dart';
+import 'package:meau/screens/profileScreen/profileScreen.dart';
 
 class Router {
   static const String splashRoute = '/';
@@ -16,6 +17,7 @@ class Router {
   static const String privacidadeRoute = '/privacidade';
   static const String dicasRoute = '/dicas';
   static const String cadastroAnimal = '/cadastroAnimal';
+  static const String profileRoute = '/perfil';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -42,6 +44,9 @@ class Router {
       case dicasRoute:
         // var data = settings.arguments as String;
         return MaterialPageRoute(builder: (_) => DicasScreen());
+        case profileRoute:
+        // var data = settings.arguments as String;
+        return MaterialPageRoute(builder: (_) => ProfileScreen());
       default:
         // var data = settings.arguments as String;
         return MaterialPageRoute(builder: (_) => HomeScreen());
