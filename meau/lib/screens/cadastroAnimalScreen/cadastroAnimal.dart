@@ -64,6 +64,7 @@ class CadastroAnimalScreen extends StatelessWidget {
                           ],
                         ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                               Flexible( child:
                                 TextFormField(
@@ -79,7 +80,10 @@ class CadastroAnimalScreen extends StatelessWidget {
                         Row( 
                           children: <Widget>[
                               Text('ESPÉCIE',
-                                style: TextIntroStyle)
+                                style: TextStyle( 
+                                color : DefaultYellowColor
+                                )
+                              )
                           ],
                         ),
                         Row(
@@ -99,7 +103,10 @@ class CadastroAnimalScreen extends StatelessWidget {
                         Row( 
                           children: <Widget>[
                               Text('SEXO',
-                                style: TextIntroStyle)
+                                style: TextStyle( 
+                                color : DefaultYellowColor
+                                )
+                              )
                           ],
                         ),
                         Row(
@@ -119,7 +126,10 @@ class CadastroAnimalScreen extends StatelessWidget {
                         Row( 
                           children: <Widget>[
                               Text('PORTE',
-                                style: TextIntroStyle)
+                                style: TextStyle( 
+                                color : DefaultYellowColor
+                                )
+                              )
                           ],
                         ),
                         Row(
@@ -143,7 +153,10 @@ class CadastroAnimalScreen extends StatelessWidget {
                         Row( 
                           children: <Widget>[
                               Text('IDADE',
-                                style: TextIntroStyle)
+                                style: TextStyle( 
+                                color : DefaultYellowColor
+                                )
+                              )
                           ],
                         ),
                         Row(
@@ -167,7 +180,10 @@ class CadastroAnimalScreen extends StatelessWidget {
                         Row( 
                           children: <Widget>[
                               Text('TEMPERAMENTO',
-                                style: TextIntroStyle)
+                                style: TextStyle( 
+                                color : DefaultYellowColor
+                                )
+                              )
                           ],
                         ),
                         Row(
@@ -221,7 +237,10 @@ class CadastroAnimalScreen extends StatelessWidget {
                         Row( 
                           children: <Widget>[
                               Text('SAÚDE',
-                                style: TextIntroStyle)
+                                style: TextStyle( 
+                                color : DefaultYellowColor
+                                )
+                              )
                           ],
                         ),
                         Row(
@@ -272,6 +291,87 @@ class CadastroAnimalScreen extends StatelessWidget {
                               
                             ],
                         ),
+                        SizedBox(height: 12.0),
+                        Row( 
+                          children: <Widget>[
+                              Text('EXIGÊNCIAS PARA ADOÇÃO',
+                                style: TextStyle( 
+                                color : DefaultYellowColor
+                                )
+                              )
+                          ],
+                        ),
+                        SizedBox(height: 8.0),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                                 Checkbox(
+                                    value: false,
+                                    onChanged: (bool newValue) {
+                                    },
+                                  ),
+                                  Text("Termo de adoção"),
+                            ],
+                        ),
+                        SizedBox(height: 8.0),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                                 Checkbox(
+                                    value: false,
+                                    onChanged: (bool newValue) {
+                                    },
+                                  ),
+                                  Text("Fotos da casa"),
+                            ],
+                        ),
+                        SizedBox(height: 8.0),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                                 Checkbox(
+                                    value: false,
+                                    onChanged: (bool newValue) {
+                                    },
+                                  ),
+                                  Text("Visita prévia ao animal"),
+                            ],
+                        ),
+                        SizedBox(height: 8.0),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                                 Checkbox(
+                                    value: false,
+                                    onChanged: (bool newValue) {
+                                    },
+                                  ),
+                                  Text("Acompanhamento pós adoção"),
+                            ],
+                        ),
+                        SizedBox(height: 8.0),
+                        Row( 
+                          children: <Widget>[
+                              Text('SOBRE O ANIMAL',
+                                style: TextStyle( 
+                                color : DefaultYellowColor
+                                )
+                              )
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                              Flexible( child:
+                                TextFormField(
+                                decoration: InputDecoration(   
+                                  labelText: 'Compartilhe sua história sobre o animal')
+                              )
+                            )
+                              
+                            ],
+                        ),
+                      
                         SizedBox(height: 36.0),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
