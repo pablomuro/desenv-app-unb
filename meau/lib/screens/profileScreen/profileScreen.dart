@@ -28,6 +28,71 @@ class ProfileScreen extends StatelessWidget {
                         color: DefaultStrongreGrennColor),
                   ),
                 ),
+          Container(
+                  padding: EdgeInsets.only(bottom: 24.0),
+                  child: Text(
+                    ProfileAge,
+                    style: TextStyle(
+                        fontSize: MediumTextSize,
+                        color: DefaultStrongreGrennColor),
+                  ),
+                ),
+          Container(
+                  padding: EdgeInsets.only(bottom: 24.0),
+                  child: Text(
+                    ProfileEmail,
+                    style: TextStyle(
+                        fontSize: MediumTextSize,
+                        color: DefaultStrongreGrennColor),
+                  ),
+                ),
+          Container(
+                  padding: EdgeInsets.only(bottom: 24.0),
+                  child: Text(
+                    Profilelocation,
+                    style: TextStyle(
+                        fontSize: MediumTextSize,
+                        color: DefaultStrongreGrennColor),
+                  ),
+                ),
+          Container(
+                  padding: EdgeInsets.only(bottom: 24.0),
+                  child: Text(
+                    ProfileAddress,
+                    style: TextStyle(
+                        fontSize: MediumTextSize,
+                        color: DefaultStrongreGrennColor),
+                  ),
+                ),
+          Container(
+                  padding: EdgeInsets.only(bottom: 24.0),
+                  child: Text(
+                    ProfilePhone,
+                    style: TextStyle(
+                        fontSize: MediumTextSize,
+                        color: DefaultStrongreGrennColor),
+                  ),
+                ),
+          Container(
+                  padding: EdgeInsets.only(bottom: 24.0),
+                  child: Text(
+                    ProfileUserName,
+                    style: TextStyle(
+                        fontSize: MediumTextSize,
+                        color: DefaultStrongreGrennColor),
+                  ),
+                ),
+          Container(
+                  padding: EdgeInsets.only(bottom: 24.0),
+                  child: Text(
+                    ProfileHistory,
+                    style: TextStyle(
+                        fontSize: MediumTextSize,
+                        color: DefaultStrongreGrennColor),
+                  ),
+                ),      
+
+
         ])));
   }
 }
