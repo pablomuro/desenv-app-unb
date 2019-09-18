@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:meau/screens/homeScreen.dart';
 import 'package:meau/screens/legalScreen/legalScreen.dart';
+import 'package:meau/screens/registerScreen/registerScreen.dart';
 import 'package:meau/screens/termosScreen/termosScreen.dart';
 import 'package:meau/screens/privacidadeScreen/privacidadeScreen.dart';
 import 'package:meau/screens/dicasScreen/dicasScreen.dart';
 import 'package:meau/screens/splashScreen.dart';
+import 'package:meau/screens/logInScreen/logInScreen.dart';
 import 'package:meau/screens/cadastroAnimalScreen/cadastroAnimal.dart';
 
 class Router {
   static const String splashRoute = '/';
   static const String homeRoute = '/home';
   static const String loginRoute = '/login';
+  static const String registerRoute = '/register';
   static const String legalRoute = '/legal';
   static const String termosRoute = '/termos';
   static const String privacidadeRoute = '/privacidade';
@@ -29,7 +32,10 @@ class Router {
         return MaterialPageRoute(builder: (_) => CadastroAnimalScreen());
       case loginRoute:
         // var data = settings.arguments as String;
-        return MaterialPageRoute(builder: (_) => HomeScreen());
+        return MaterialPageRoute(builder: (_) => LogInScreen());
+      case registerRoute:
+        // var data = settings.arguments as String;
+        return MaterialPageRoute(builder: (_) => RegisterScreen());
       case legalRoute:
         // var data = settings.arguments as String;
         return MaterialPageRoute(builder: (_) => LegalScreen());

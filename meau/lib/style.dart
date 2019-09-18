@@ -22,6 +22,11 @@ const Color MenuInfoBgColor = Color(0xffcfe9e5);
 const Color MenuConfigBgColor = Color(0xffe6e7e8);
 const Color MenuTileBgColor = Color(0xfff7f7f7);
 
+const Color ImagePickerGray = Color(0xffe6e7e7);
+
+const Color FacebookBtnColor = Color(0xff194f7c);
+const Color GoogleBtnColor = Color(0xfff15f5c);
+
 const TextWelcomeStyle = TextStyle(
   fontFamily: CourgettFontFamily,
   fontSize: LargeTextSize,
