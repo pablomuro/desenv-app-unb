@@ -38,4 +38,5 @@ https://dev.to/aaronksaunders/simple-firebase-login-flow-in-flutter-now-firebase
 https://www.youtube.com/watch?v=_j7yKt3vivk
 https://www.youtube.com/watch?v=vFxk_KJCqgk
 https://www.youtube.com/watch?v=nxu4bMpPvCQ
+https://medium.com/flutterando/seu-primeiro-crud-com-flutter-e-firestore-parte-1-be3e9392a301 
 https://github.com/pedrobarbiero/humanresources
