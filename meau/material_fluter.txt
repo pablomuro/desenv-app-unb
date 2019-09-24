@@ -40,3 +40,6 @@ https://www.youtube.com/watch?v=vFxk_KJCqgk
 https://www.youtube.com/watch?v=nxu4bMpPvCQ
 https://medium.com/flutterando/seu-primeiro-crud-com-flutter-e-firestore-parte-1-be3e9392a301 
 https://github.com/pedrobarbiero/humanresources
+
+https://www.c-sharpcorner.com/article/firebase-firestore-crud-operation-in-flutter/
+https://www.c-sharpcorner.com/article/firebase-firestore-crud-operation-in-flutter/
