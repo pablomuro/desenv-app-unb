@@ -43,3 +43,4 @@ https://github.com/pedrobarbiero/humanresources
 
 https://www.c-sharpcorner.com/article/firebase-firestore-crud-operation-in-flutter/
 https://www.c-sharpcorner.com/article/firebase-firestore-crud-operation-in-flutter/
+https://zaiste.net/flutter-in-practice/
