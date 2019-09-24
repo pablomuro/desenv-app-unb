@@ -69,14 +69,6 @@ class RegisterFormState extends State<RegisterForm> {
           SizedBox(height: 36.0),
           TextFormField(
             decoration: InputDecoration(
-              hintText: 'Email',
-              contentPadding: EdgeInsets.only(left: 12.0, bottom: 8.0)
-            ),
-            validator: userNameValidator,
-          ),
-          SizedBox(height: 36.0),
-          TextFormField(
-            decoration: InputDecoration(
               hintText: 'Telefone',
               contentPadding: EdgeInsets.only(left: 12.0, bottom: 8.0)
             ),

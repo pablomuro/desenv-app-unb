@@ -26,7 +26,8 @@ class LoginFormState extends State<LoginForm> {
       form.save();
       try {
         FirebaseUser result = await widget.auth.loginUser(email: _email, password: _password);
-        print(result);  
+        print(result);
+        Navigator.pushNamed(context, Router.registerRoute);  
       } on AuthException catch (error) {
         return _buildErrorDialog(context, error.message);
       } on Exception catch (error) {

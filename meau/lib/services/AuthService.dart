@@ -6,9 +6,6 @@ class AuthService{
   final FirebaseAuth _auth = FirebaseAuth.instance;
   var currentUser;
 
-  // AuthService() {
-  // }
-
   Future<FirebaseUser> getUser() {
     return _auth.currentUser();
   }
