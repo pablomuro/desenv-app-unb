@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class AuthService with ChangeNotifier {
+class AuthService{
   final FirebaseAuth _auth = FirebaseAuth.instance;
   var currentUser;
 
@@ -16,7 +16,6 @@ class AuthService with ChangeNotifier {
   // wrappinhg the firebase calls
   Future logout() async {
     var result = FirebaseAuth.instance.signOut();
-    notifyListeners();
     return result;
   }
 
@@ -29,13 +28,9 @@ class AuthService with ChangeNotifier {
   // logs in the user if password matches
   Future<FirebaseUser> loginUser({String email, String password}) async {
     try {
-      var result = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
-      // since something changed, let's notify the listeners...
-      notifyListeners();
+      var result = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
       return result.user;
     }  catch (e) {
-      // throw the Firebase AuthException that we caught
       throw new AuthException(e.code, e.message);
     }
   }
