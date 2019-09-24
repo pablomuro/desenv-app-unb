@@ -21,6 +21,7 @@ dependencies:
   font_awesome_flutter: 8.5.0
   cloud_firestore: 0.12.9+2
   flutter_launcher_icons: ^0.7.3
+  firebase_auth: ^0.14.0+5 
   flutter:
     sdk: flutter
 

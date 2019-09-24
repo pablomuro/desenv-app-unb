@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:meau/routes.dart';
-
+import 'package:meau/services/AuthService.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:async';
 
 class LoginForm extends StatefulWidget {
+
+  final AuthService auth= new AuthService();
+
   @override
   LoginFormState createState() {
     return LoginFormState();
@@ -11,6 +16,24 @@ class LoginForm extends StatefulWidget {
 
 class LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
+  String _password;
+  String _email;
+
+  login() async {
+    final form = _formKey.currentState;
+
+    if (form.validate()) {
+      form.save();
+      try {
+        FirebaseUser result = await widget.auth.loginUser(email: _email, password: _password);
+        print(result);  
+      } on AuthException catch (error) {
+        return _buildErrorDialog(context, error.message);
+      } on Exception catch (error) {
+        return _buildErrorDialog(context, error.toString());
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +45,16 @@ class LoginFormState extends State<LoginForm> {
               hintText: 'Nome de usuário',
             ),
             validator: userNameValidator,
+            onSaved: (value) => _email = value
           ),
           SizedBox(height: 20.0),
           TextFormField(
+            obscureText: true,
             decoration: InputDecoration(
               hintText: 'Senha',
             ),
             validator: userNameValidator,
+            onSaved: (value) => _password = value
           ),
           SizedBox(height: 52.0),
           Container(
@@ -37,10 +63,7 @@ class LoginFormState extends State<LoginForm> {
               child: RaisedButton(
                   child: Text('ENTRAR'),
                   onPressed: () {
-                    Navigator.pushNamed(context, Router.registerRoute);
-                    if (_formKey.currentState.validate()) {
-                      // Navigator.pushNamed(context, Router.registerRoute);
-                    }
+                    login();
                   })),
         ]));
   }
@@ -51,5 +74,26 @@ String userNameValidator(value) {
     return 'Campo obrigatório';
   }
   return null;
+}
+
+
+
+Future _buildErrorDialog(BuildContext context, _message) {
+  return showDialog(
+    builder: (context) {
+      return AlertDialog(
+        title: Text('Error Message'),
+        content: Text(_message),
+        actions: <Widget>[
+          FlatButton(
+              child: Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              })
+        ],
+      );
+    },
+    context: context,
+  );
 }
 
