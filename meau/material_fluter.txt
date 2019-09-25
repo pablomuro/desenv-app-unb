@@ -44,3 +44,4 @@ https://github.com/pedrobarbiero/humanresources
 https://www.c-sharpcorner.com/article/firebase-firestore-crud-operation-in-flutter/
 https://www.c-sharpcorner.com/article/firebase-firestore-crud-operation-in-flutter/
 https://zaiste.net/flutter-in-practice/
+https://stackoverflow.com/questions/46145472/how-to-convert-base64-string-into-image-with-flutter
