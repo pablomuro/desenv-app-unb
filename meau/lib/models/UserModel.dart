@@ -5,7 +5,9 @@ import 'package:meau/models/BaseModel.dart';
 import 'dart:convert';
 
 class User extends BaseModel{
-  String _documentId;
+  User();
+
+  String documentID;
   String name;
   int age;
   String email;
@@ -18,9 +20,10 @@ class User extends BaseModel{
   String confirmPassword;
   String pictureString;
   Image pictureParsed;
+  List<DocumentSnapshot> pets;
   
   User.fromMap(DocumentSnapshot document) {
-    _documentId = document.documentID;
+    documentID = document.documentID;
 
     this.name = document.data['name'];
     this.age = document.data['age'];
@@ -31,7 +34,7 @@ class User extends BaseModel{
     this.phone = document.data['phone'];
     this.username = document.data['username'];
     this.password = document.data['password'];
-    // this.confirmPassword = document.data['confirmPassword'];
+    this.pets = document.data['pets'];
     this.pictureString = document.data['pictureString'];
     Uint8List bytes = base64.decode(this.pictureString);
     this.pictureParsed = Image.memory(bytes);
@@ -51,12 +54,12 @@ class User extends BaseModel{
     map['phone'] = this.phone;
     map['username'] = this.username;
     map['password'] = this.password;
-    map['confirmPassword'] = this.confirmPassword;
+    map['pets'] = this.pets;
     map['pictureString'] = this.pictureString;
 
     return map;
   }
 
   @override
-  String documentId() => _documentId;
+  String documentId() => documentID;
 }

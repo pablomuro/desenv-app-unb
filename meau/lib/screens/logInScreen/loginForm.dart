@@ -9,7 +9,7 @@ import 'package:meau/services/UserService.dart';
 class LoginForm extends StatefulWidget {
 
   final AuthService auth= new AuthService();
-  final UserRepository userRepository = new UserRepository();
+  final UserService userService = new UserService();
 
   @override
   LoginFormState createState() {
@@ -30,8 +30,10 @@ class LoginFormState extends State<LoginForm> {
       try {
         FirebaseUser authUser = await widget.auth.loginUser(email: _email, password: _password);
         print(authUser);
-        // User user = userRepository.findByEmail
-        Navigator.pushNamed(context, Router.registerRoute);  
+        widget.userService.findByEmail(_email).listen( (_user){
+          User user = _user;
+          Navigator.pushNamed(context, Router.registerRoute, arguments: user );  
+        });
       } on AuthException catch (error) {
         return _buildErrorDialog(context, error.message);
       } on Exception catch (error) {

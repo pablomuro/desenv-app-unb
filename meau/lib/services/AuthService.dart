@@ -16,10 +16,14 @@ class AuthService{
   }
 
   // wrapping the firebase calls
-  Future createUser(
-      {
-      String email,
-      String password}) async {}
+  Future createUser({String email, String password}) async {
+    try {
+      var result = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
+      return result.user;
+    } catch (e) {
+      throw new AuthException(e.code, e.message);
+    }
+  }
 
   // logs in the user if password matches
   Future<FirebaseUser> loginUser({String email, String password}) async {
