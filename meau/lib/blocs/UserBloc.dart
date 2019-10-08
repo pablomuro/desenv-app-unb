@@ -7,9 +7,11 @@ import 'package:rxdart/rxdart.dart';
 
 class UserBloc extends BlocBase {
   User _user = new User();
+  File _image;
 
   UserBloc() {
     _userController.listen((value) => _user = value);
+    _imageController.listen((value) => _image = value);
     setUserStream(new User());
   }
 
@@ -23,6 +25,10 @@ class UserBloc extends BlocBase {
   Stream<User> get userStream => _userController.stream;
   void setUserStream(User value) => _userController.sink.add(value);
 
+  var _imageController = BehaviorSubject<File>();
+  Stream<File> get imageStrem => _imageController.stream;
+  void setImageStream(File value) => _imageController.sink.add(value);
+
   void setName(String value) => _userController.value.name = value;
   void setAge(int value) => _userController.value.age = value;
   void setEmail(String value) => _userController.value.email = value;
@@ -35,7 +41,7 @@ class UserBloc extends BlocBase {
   void setConfirmPassword(String value) => _userController.value.confirmPassword = value;
   void setPicture(File value) => _userController.value.profileImage = value;
 
-  File getPicture() => _userController.value.profileImage;
+  File getPicture() => _userController.value?.profileImage;
 
   bool insertOrUpdate() {
     if (_user.documentID?.isEmpty ?? true) {

@@ -30,6 +30,7 @@ class RegisterFormState extends State<RegisterForm> {
   Future getImage() async {
     File image = await ImagePicker.pickImage(source: ImageSource.gallery);
     _bloc.setPicture(image);
+    _bloc.setImageStream(image);
   }
 
   register() async {
@@ -79,7 +80,7 @@ class RegisterFormState extends State<RegisterForm> {
                   contentPadding: EdgeInsets.only(left: 12.0, bottom: 8.0)
                 ),
                 validator: notNullValidator,
-                onSaved: (value) => _bloc.setName(value)
+                onChanged: (value) => _bloc.setName(value)
               ),
               SizedBox(height: 36.0),
               TextFormField(
@@ -88,7 +89,8 @@ class RegisterFormState extends State<RegisterForm> {
                   contentPadding: EdgeInsets.only(left: 12.0, bottom: 8.0)
                 ),
                 validator: notNullValidator,
-                onSaved: (value) => _bloc.setAge(int.parse(value))
+                onChanged: (value) => _bloc.setAge(int.parse(value)),
+                
               ),
               SizedBox(height: 36.0),
               TextFormField(
@@ -97,7 +99,7 @@ class RegisterFormState extends State<RegisterForm> {
                   contentPadding: EdgeInsets.only(left: 12.0, bottom: 8.0)
                 ),
                 validator: notNullValidator,
-                onSaved: (value) => _bloc.setEmail(value)
+                onChanged: (value) => _bloc.setEmail(value)
               ),
               SizedBox(height: 36.0),
               TextFormField(
@@ -106,7 +108,7 @@ class RegisterFormState extends State<RegisterForm> {
                   contentPadding: EdgeInsets.only(left: 12.0, bottom: 8.0)
                 ),
                 validator: notNullValidator,
-                onSaved: (value) => _bloc.setState(value)
+                onChanged: (value) => _bloc.setState(value)
               ),
               SizedBox(height: 36.0),
               TextFormField(
@@ -115,7 +117,7 @@ class RegisterFormState extends State<RegisterForm> {
                   contentPadding: EdgeInsets.only(left: 12.0, bottom: 8.0)
                 ),
                 validator: notNullValidator,
-                onSaved: (value) => _bloc.setCity(value)
+                onChanged: (value) => _bloc.setCity(value)
               ),
               SizedBox(height: 36.0),
               TextFormField(
@@ -124,7 +126,7 @@ class RegisterFormState extends State<RegisterForm> {
                   contentPadding: EdgeInsets.only(left: 12.0, bottom: 8.0)
                 ),
                 validator: notNullValidator,
-                onSaved: (value) => _bloc.setAdrress(value)
+                onChanged: (value) => _bloc.setAdrress(value)
               ),
               SizedBox(height: 36.0),
               TextFormField(
@@ -133,7 +135,7 @@ class RegisterFormState extends State<RegisterForm> {
                   contentPadding: EdgeInsets.only(left: 12.0, bottom: 8.0)
                 ),
                 validator: notNullValidator,
-                onSaved: (value) => _bloc.setPhone(value)
+                onChanged: (value) => _bloc.setPhone(value)
               ),
               SizedBox(height: 28.0),
               Text("INFORMAÇÕES DE PERFIL", style: TextStyle(color: DefaultGrennColor),),
@@ -144,7 +146,7 @@ class RegisterFormState extends State<RegisterForm> {
                   contentPadding: EdgeInsets.only(left: 12.0, bottom: 8.0)
                 ),
                 validator: notNullValidator,
-                onSaved: (value) => _bloc.setUsername(value)
+                onChanged: (value) => _bloc.setUsername(value)
               ),
               SizedBox(height: 36.0),
               TextFormField(
@@ -153,7 +155,7 @@ class RegisterFormState extends State<RegisterForm> {
                   contentPadding: EdgeInsets.only(left: 12.0, bottom: 8.0)
                 ),
                 validator: confirmPassword,
-                onSaved: (value) => _bloc.setPassword(value)
+                onChanged: (value) => _bloc.setPassword(value)
               ),
               SizedBox(height: 36.0),
               TextFormField(
@@ -162,7 +164,7 @@ class RegisterFormState extends State<RegisterForm> {
                   contentPadding: EdgeInsets.only(left: 12.0, bottom: 8.0)
                 ),
                 validator: confirmPassword,
-                onSaved: (value) => _bloc.setConfirmPassword(value)
+                onChanged: (value) => _bloc.setConfirmPassword(value)
               ),
               SizedBox(height: 28.0),
               Text("FOTO DE PERFIL", style: TextStyle(color: DefaultGrennColor),),
@@ -170,32 +172,42 @@ class RegisterFormState extends State<RegisterForm> {
               Center(
                 child: InkWell(
                   onTap: getImage,
-                  child: _bloc.getPicture() != null ?
-                  Image.file(_bloc.getPicture()) :
-                  Container(
-                    padding: EdgeInsets.all(48.0),
-                    decoration: BoxDecoration(
-                      color: ImagePickerGray,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey,
-                          blurRadius: 2.0,
-                          spreadRadius: 1.0,
-                          offset: new Offset(1.0, 4.0),
+                  child: StreamBuilder<Object>(
+                    stream: _bloc.imageStrem,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData){
+                        return Container(
+                          width: 150.0,
+                          height: 150.0,
+                          child: Image.file(snapshot.data)
+                        );
+                      }
+                      return Container(
+                        padding: EdgeInsets.all(48.0),
+                        decoration: BoxDecoration(
+                          color: ImagePickerGray,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey,
+                              blurRadius: 2.0,
+                              spreadRadius: 1.0,
+                              offset: new Offset(1.0, 4.0),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Icon(Icons.control_point, color: DefaultTextColor,),
-                        Text(
-                          'Adicionar Foto',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(color: DefaultTextColor),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Icon(Icons.control_point, color: DefaultTextColor,),
+                            Text(
+                              'Adicionar Foto',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(color: DefaultTextColor),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      );
+                    }
                   ),
                 ),
               ),
