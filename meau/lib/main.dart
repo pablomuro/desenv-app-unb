@@ -11,7 +11,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      //add yours BLoCs controlles
       blocs: [
         Bloc((i) => UserBloc()),
       ],
