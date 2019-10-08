@@ -1,6 +1,6 @@
+import 'dart:io';
 import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/widgets.dart';
 import 'package:meau/models/BaseModel.dart';
 import 'dart:convert';
 
@@ -18,8 +18,8 @@ class User extends BaseModel{
   String username;
   String password;
   String confirmPassword;
-  String pictureString;
-  Image pictureParsed;
+  String profilePicture;
+  File profileImage;
   List<DocumentSnapshot> pets;
   
   User.fromMap(DocumentSnapshot document) {
@@ -35,9 +35,9 @@ class User extends BaseModel{
     this.username = document.data['username'];
     this.password = document.data['password'];
     this.pets = document.data['pets'];
-    this.pictureString = document.data['pictureString'];
-    Uint8List bytes = base64.decode(this.pictureString);
-    this.pictureParsed = Image.memory(bytes);
+    this.profilePicture = document.data['profilePicture'];
+    Uint8List bytes = base64.decode(this.profilePicture);
+    this.profileImage = File.fromRawPath(bytes);
     
   }
 
@@ -55,7 +55,7 @@ class User extends BaseModel{
     map['username'] = this.username;
     map['password'] = this.password;
     map['pets'] = this.pets;
-    map['pictureString'] = this.pictureString;
+    map['profilePicture'] = base64.encode(this.profileImage.readAsBytesSync());
 
     return map;
   }

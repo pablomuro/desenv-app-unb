@@ -27,7 +27,7 @@ class Router {
         return MaterialPageRoute(builder: (_) => SplashScreen());
       case homeRoute:
         // var data = settings.arguments as String;
-        return MaterialPageRoute(builder: (_) => HomeScreen());
+        return MaterialPageRoute(builder: (_) => RegisterScreen());
       case cadastroAnimal: 
         return MaterialPageRoute(builder: (_) => CadastroAnimalScreen());
       case loginRoute:

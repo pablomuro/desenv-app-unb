@@ -24,6 +24,7 @@ dependencies:
   firebase_auth: ^0.14.0+5
   bloc_pattern: ^2.4.0+2
   rxdart: ^0.22.3
+  image_picker: 0.6.1+4
   flutter:
     sdk: flutter
 
