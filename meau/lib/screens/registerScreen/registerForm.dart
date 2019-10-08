@@ -154,6 +154,7 @@ class RegisterFormState extends State<RegisterForm> {
                   hintText: 'Senha',
                   contentPadding: EdgeInsets.only(left: 12.0, bottom: 8.0)
                 ),
+                obscureText: true,
                 validator: confirmPassword,
                 onChanged: (value) => _bloc.setPassword(value)
               ),
@@ -163,6 +164,7 @@ class RegisterFormState extends State<RegisterForm> {
                   hintText: 'Confirmação de Senha',
                   contentPadding: EdgeInsets.only(left: 12.0, bottom: 8.0)
                 ),
+                obscureText: true,
                 validator: confirmPassword,
                 onChanged: (value) => _bloc.setConfirmPassword(value)
               ),

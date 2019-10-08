@@ -8,7 +8,7 @@ import 'package:meau/services/UserService.dart';
 
 class LoginForm extends StatefulWidget {
 
-  final AuthService auth= new AuthService();
+  final AuthService auth = AuthService.instance;
   final UserService userService = new UserService();
 
   @override
@@ -29,8 +29,7 @@ class LoginFormState extends State<LoginForm> {
       form.save();
       try {
         FirebaseUser authUser = await widget.auth.loginUser(email: _email, password: _password);
-        print(authUser);
-        widget.userService.findByEmail(_email).listen( (_user){
+          widget.userService.findByEmail(_email).listen( (_user){
           User user = _user;
           Navigator.pushNamed(context, Router.registerRoute, arguments: user );  
         });
@@ -51,7 +50,7 @@ class LoginFormState extends State<LoginForm> {
             decoration: InputDecoration(
               hintText: 'Nome de usuário',
             ),
-            validator: userNameValidator,
+            validator: notNullValidator,
             onSaved: (value) => _email = value
           ),
           SizedBox(height: 20.0),
@@ -60,7 +59,7 @@ class LoginFormState extends State<LoginForm> {
             decoration: InputDecoration(
               hintText: 'Senha',
             ),
-            validator: userNameValidator,
+            validator: notNullValidator,
             onSaved: (value) => _password = value
           ),
           SizedBox(height: 52.0),
@@ -76,7 +75,7 @@ class LoginFormState extends State<LoginForm> {
   }
 }
 
-String userNameValidator(value) {
+String notNullValidator(value) {
   if (value.isEmpty) {
     return 'Campo obrigatório';
   }

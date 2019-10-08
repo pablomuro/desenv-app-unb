@@ -5,6 +5,14 @@ class AuthService{
   final FirebaseAuth _auth = FirebaseAuth.instance;
   var currentUser;
 
+  static final AuthService instance = AuthService._internal();
+
+  factory AuthService() {
+    return instance;
+  }
+
+  AuthService._internal();
+
   Future<FirebaseUser> getUser() {
     return _auth.currentUser();
   }
@@ -20,8 +28,10 @@ class AuthService{
     try {
       var result = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
       return result.user;
-    } catch (e) {
+    } on AuthException catch (e) {
       throw new AuthException(e.code, e.message);
+    } on Exception catch (e){
+      throw new Exception(e);
     }
   }
 
@@ -30,8 +40,10 @@ class AuthService{
     try {
       var result = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
       return result.user;
-    }  catch (e) {
+    } on AuthException catch (e) {
       throw new AuthException(e.code, e.message);
+    } on Exception catch (e){
+      throw new Exception(e);
     }
   }
 }

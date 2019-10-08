@@ -1,11 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meau/models/UserModel.dart';
 import 'package:meau/services/AuthService.dart';
 
 
 class UserService{
   CollectionReference _collection = Firestore.instance.collection('users');
-  final AuthService auth = new AuthService();
+  final AuthService auth = AuthService.instance;
 
   Stream<User> findById(String _documentId)  => _collection.where('_documentId', isEqualTo: _documentId).limit(1).snapshots().map(
     (query) => User.fromMap(query.documents[0])
@@ -19,11 +20,18 @@ class UserService{
   );
 
   void add(User user){
-    emailAlreadyRegister(user.email).listen((result){
+    emailAlreadyRegister(user.email).listen((result) async {
       if(result == false){
-        user.pets = new List<DocumentSnapshot>();
-        _collection.add(user.toMap());
-        auth.createUser(email: user.email, password: user.password);
+        try{
+          user.pets = new List<DocumentSnapshot>();
+          _collection.add(user.toMap());
+          await auth.createUser(email: user.email, password: user.password);
+        }on AuthException catch (e) {
+          throw new AuthException(e.code, e.message);
+        } on Exception catch (e){
+          throw new Exception(e);
+        }
+        
       }
     });
   } 
