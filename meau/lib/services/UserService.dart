@@ -20,20 +20,22 @@ class UserService{
   );
 
   void add(User user){
-    emailAlreadyRegister(user.email).listen((result) async {
-      if(result == false){
-        try{
-          user.pets = new List<DocumentSnapshot>();
-          _collection.add(user.toMap());
-          await auth.createUser(email: user.email, password: user.password);
-        }on AuthException catch (e) {
-          throw new AuthException(e.code, e.message);
-        } on Exception catch (e){
-          throw new Exception(e);
-        }
-        
-      }
-    });
+    try{
+      emailAlreadyRegister(user.email).listen((result) async {
+        if(result == false){
+            var firebaseUser = await auth.createUser(email: user.email, password: user.password);
+            if(firebaseUser){
+              user.pets = new List<DocumentSnapshot>();
+              _collection.add(user.toMap());
+            }
+          }
+      });
+    }
+    on AuthException catch (e) {
+      throw new AuthException(e.code, e.message);
+    } on Exception catch (e){
+      throw new Exception(e);
+    }
   } 
 
   void update(String documentId, User user) =>

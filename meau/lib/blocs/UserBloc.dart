@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:bloc_pattern/bloc_pattern.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meau/models/UserModel.dart';
 import 'package:meau/services/UserService.dart';
 import 'package:rxdart/rxdart.dart';
@@ -44,20 +45,30 @@ class UserBloc extends BlocBase {
   File getPicture() => _userController.value?.profileImage;
 
   bool insertOrUpdate() {
-    if (_user.documentID?.isEmpty ?? true) {
-      _repository.add(_user);
-    } else {
-      _repository.update(_user.documentID, _user);
-    }
+    try{
+      if (_user.documentID?.isEmpty ?? true) {
+        _repository.add(_user);
+      } else {
+        _repository.update(_user.documentID, _user);
+      }
 
-    return true;
+      return true;
+    } on AuthException catch (e) {
+      throw new AuthException(e.code, e.message);
+    } on Exception catch (e){
+      throw new Exception(e);
+    }
+    
   }
 
-  bool confirmPassword(){
+  String validatePassword(){
     if( (_user.password != null && _user.confirmPassword != null) && (_user.password == _user.confirmPassword)){
-        return true;
+      if((_user.password.length < 6 || _user.confirmPassword.length < 6)){
+        return 'senha tem que ter mais de 6 caracteres';
+      }
+        return '';
     }
-    return false;
+    return 'Senhas não são iguais';
   }
 
   @override

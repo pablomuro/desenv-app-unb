@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:bloc_pattern/bloc_pattern.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:meau/blocs/UserBloc.dart';
@@ -54,14 +55,22 @@ class RegisterFormState extends State<RegisterForm> {
   return null;
   }
 
-  String confirmPassword(value){
+  String validatePassword(value){
     var notNull = notNullValidator(value);
     if(notNull != null) return notNull;
 
-    if(_bloc.confirmPassword()){
+    return _bloc.validatePassword();
+  }
+
+  String emailValidator(value){
+    var notNull = notNullValidator(value);
+    if(notNull != null) return notNull;
+
+    if(EmailValidator.validate(value)){
       return null;
     }
-    return 'Senhas não são iguais';
+
+    return 'Email inválido';
   }
 
   @override
@@ -98,7 +107,7 @@ class RegisterFormState extends State<RegisterForm> {
                   hintText: 'Email',
                   contentPadding: EdgeInsets.only(left: 12.0, bottom: 8.0)
                 ),
-                validator: notNullValidator,
+                validator: emailValidator,
                 onChanged: (value) => _bloc.setEmail(value)
               ),
               SizedBox(height: 36.0),
@@ -155,7 +164,7 @@ class RegisterFormState extends State<RegisterForm> {
                   contentPadding: EdgeInsets.only(left: 12.0, bottom: 8.0)
                 ),
                 obscureText: true,
-                validator: confirmPassword,
+                validator: validatePassword,
                 onChanged: (value) => _bloc.setPassword(value)
               ),
               SizedBox(height: 36.0),
@@ -165,7 +174,7 @@ class RegisterFormState extends State<RegisterForm> {
                   contentPadding: EdgeInsets.only(left: 12.0, bottom: 8.0)
                 ),
                 obscureText: true,
-                validator: confirmPassword,
+                validator: validatePassword,
                 onChanged: (value) => _bloc.setConfirmPassword(value)
               ),
               SizedBox(height: 28.0),

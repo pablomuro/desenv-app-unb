@@ -25,6 +25,7 @@ dependencies:
   bloc_pattern: ^2.4.0+2
   rxdart: ^0.22.3
   image_picker: 0.6.1+4
+  email_validator: ^1.0.0
   flutter:
     sdk: flutter
 

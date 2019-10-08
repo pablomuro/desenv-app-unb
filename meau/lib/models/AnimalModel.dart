@@ -22,7 +22,7 @@ class Animal extends BaseModel{
   String phone;
   String username;
   String password;
-  String confirmPassword;
+  String validatePassword;
   String pictureString;
   Image pictureParsed;
 
@@ -38,7 +38,7 @@ class Animal extends BaseModel{
     this.phone = document.data['phone'];
     this.username = document.data['username'];
     this.password = document.data['password'];
-    this.confirmPassword = document.data['confirmPassword'];
+    this.validatePassword = document.data['validatePassword'];
     this.pictureString = document.data['pictureString'];
     Uint8List bytes = base64.decode(this.pictureString);
     this.pictureParsed = Image.memory(bytes);
@@ -58,7 +58,7 @@ class Animal extends BaseModel{
     map['phone'] = this.phone;
     map['username'] = this.username;
     map['password'] = this.password;
-    map['confirmPassword'] = this.confirmPassword;
+    map['validatePassword'] = this.validatePassword;
     map['pictureString'] = this.pictureString;
 
     return map;
