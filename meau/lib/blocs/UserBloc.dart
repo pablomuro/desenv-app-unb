@@ -66,7 +66,7 @@ class UserBloc extends BlocBase {
       if((_user.password.length < 6 || _user.confirmPassword.length < 6)){
         return 'senha tem que ter mais de 6 caracteres';
       }
-        return '';
+        return null;
     }
     return 'Senhas não são iguais';
   }

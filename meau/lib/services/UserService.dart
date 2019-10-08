@@ -24,7 +24,7 @@ class UserService{
       emailAlreadyRegister(user.email).listen((result) async {
         if(result == false){
             var firebaseUser = await auth.createUser(email: user.email, password: user.password);
-            if(firebaseUser){
+            if(firebaseUser?.uid != null){
               user.pets = new List<DocumentSnapshot>();
               _collection.add(user.toMap());
             }
