@@ -17,6 +17,7 @@ const Color DefaultStrongreGrennColor = Color(0xff589b9b);
 const Color DefaultGrennColor = Color(0xff88c9bf);
 const Color DefaultYellowColor = Color(0xffffd358);
 const Color DefaultLightYellowColor = Color(0xfffee29b);
+const Color DefaultStrongreYellowColor = Color(0xfff7a800);
 const Color DefaultTextColor = Color(0xff757575);
 const Color DefaultButtonColor = Color(0xff434343);
 

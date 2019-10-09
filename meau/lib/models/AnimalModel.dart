@@ -5,16 +5,18 @@ import 'package:meau/models/BaseModel.dart';
 import 'dart:convert';
 
 class Animal extends BaseModel{
-  String _documentId;
+  Animal();
+
+  String documentID;
   HelpAs helpAs;
   String name;
   AnimalType type;
   AnimalSex sex;
   AnimalSize size;
   AnimalAge age;
-  List<String> temper;
-  List<String> health;
-  List<String> needs;
+  List<dynamic> temper;
+  List<dynamic> health;
+  List<dynamic> needs;
   String goals;
   String about;
   String owner;
@@ -22,7 +24,7 @@ class Animal extends BaseModel{
   File animalImage;
 
   Animal.fromMap(DocumentSnapshot document) {
-    _documentId = document.documentID;
+    documentID = document.documentID;
 
     this.name = document.data['name'];
     this.helpAs = document.data['helpAs'];
@@ -30,9 +32,14 @@ class Animal extends BaseModel{
     this.sex = document.data['sex'];
     this.size = document.data['size'];
     this.age = document.data['age'];
+
     this.temper = document.data['temper'];
     this.health = document.data['health'];
     this.needs = document.data['needs'];
+    this.temper = this.temper.cast<String>();
+    this.health = this.health.cast<String>();
+    this.needs = this.needs.cast<String>();
+
     this.goals = document.data['goals'];
     this.about = document.data['about'];
     this.owner = document.data['owner'];
@@ -64,7 +71,7 @@ class Animal extends BaseModel{
   }
 
   @override
-  String documentId() => _documentId;
+  String documentId() => documentID;
 
 }
 

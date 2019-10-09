@@ -1,15 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:meau/models/UserModel.dart';
 import 'package:meau/routes.dart';
 import 'package:meau/services/AuthService.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:async';
-import 'package:meau/services/UserService.dart';
 
 class LoginForm extends StatefulWidget {
-
-  final AuthService auth = AuthService.instance;
-  final UserService userService = new UserService();
 
   @override
   LoginFormState createState() {
@@ -22,14 +17,16 @@ class LoginFormState extends State<LoginForm> {
   String _password;
   String _email;
 
+  final AuthService _auth = AuthService.instance;
+
   login() async {
     final form = _formKey.currentState;
 
     if (form.validate()) {
       form.save();
       try {
-        FirebaseUser authUser = await widget.auth.loginUser(email: _email, password: _password);
-        if(authUser?.uid != null){
+        FirebaseUser _authUser = await _auth.loginUser(email: _email, password: _password);
+        if(_authUser?.uid != null){
           Navigator.pushNamed(context, Router.homeRoute);
         }
       } on AuthException catch (error) {

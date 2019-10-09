@@ -37,7 +37,7 @@ class Router {
         // var data = settings.arguments as String;
         return MaterialPageRoute(builder: (_) => HomeScreen());
       case cadastroAnimal:
-        if(!_auth.isLogged()) return MaterialPageRoute(builder: (_) => OpsScreen());
+        // if(!_auth.isLogged()) return MaterialPageRoute(builder: (_) => OpsScreen());
 
         return MaterialPageRoute(builder: (_) => CadastroAnimalScreen());
       case loginRoute:

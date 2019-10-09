@@ -42,8 +42,8 @@ class AnimalService{
     }
   } 
 
-  void update(String documentId, Animal Animal) =>
-      _collection.document(documentId).updateData(Animal.toMap());
+  void update(String documentId, Animal animal) =>
+      _collection.document(documentId).updateData(animal.toMap());
 
   void delete(String documentId) => _collection.document(documentId).delete();
 

@@ -1,5 +1,6 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
+import 'package:meau/blocs/AnimalBloc.dart';
 import 'package:meau/blocs/UserBloc.dart';
 import 'package:meau/routes.dart';
 import 'package:meau/theme.dart';
@@ -13,10 +14,10 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       blocs: [
         Bloc((i) => UserBloc()),
+        Bloc((i) => AnimalBloc()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        key: new Key('key_meua_app'),
         title: 'Flutter Demo',
         theme: themeDefinition,
         onGenerateRoute: Router.generateRoute,

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:meau/routes.dart';
-import 'package:meau/screens/registerScreen/registerForm.dart';
 import 'package:meau/screens/registerScreen/texts.dart';
 import 'package:meau/style.dart';
 import 'package:meau/widgets/AppDrawer/AppDrawer.dart';
 
 class OpsScreen extends StatelessWidget {
-  static const BottomSpace = 8.0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
