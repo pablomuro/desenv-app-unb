@@ -7,7 +7,7 @@ import 'package:meau/theme.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
+        key: new Key('key_meua_app'),
         title: 'Flutter Demo',
         theme: themeDefinition,
         onGenerateRoute: Router.generateRoute,

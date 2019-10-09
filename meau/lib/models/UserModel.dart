@@ -20,7 +20,8 @@ class User extends BaseModel{
   String confirmPassword;
   String profilePicture;
   File profileImage;
-  List<DocumentSnapshot> pets;
+  List<dynamic> pets;
+  List<dynamic> petsHistory;
   
   User.fromMap(DocumentSnapshot document) {
     documentID = document.documentID;
@@ -35,6 +36,7 @@ class User extends BaseModel{
     this.username = document.data['username'];
     this.password = document.data['password'];
     this.pets = document.data['pets'];
+    this.petsHistory = document.data['petsHistory'];
     this.profilePicture = document.data['profilePicture'];
     Uint8List bytes = base64.decode(this.profilePicture);
     this.profileImage = File.fromRawPath(bytes);
@@ -55,6 +57,7 @@ class User extends BaseModel{
     map['username'] = this.username;
     map['password'] = this.password;
     map['pets'] = this.pets;
+    map['petsHistory'] = this.petsHistory;
     map['profilePicture'] = base64.encode(this.profileImage.readAsBytesSync());
 
     return map;

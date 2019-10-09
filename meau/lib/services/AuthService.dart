@@ -1,9 +1,12 @@
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
-
+import 'package:meau/models/UserModel.dart';
+import 'package:meau/services/UserService.dart';
 class AuthService{
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  var currentUser;
+  final UserService _userService = UserService.instance;
+  FirebaseUser currentFirebaseUser = null;
+  User loggedUser = null;
 
   static final AuthService instance = AuthService._internal();
 
@@ -15,6 +18,13 @@ class AuthService{
 
   Future<FirebaseUser> getUser() {
     return _auth.currentUser();
+  }
+
+  bool isLogged(){
+    if(loggedUser != null){
+      return true;
+    }
+    return false;
   }
 
   // wrappinhg the firebase calls
@@ -39,6 +49,10 @@ class AuthService{
   Future<FirebaseUser> loginUser({String email, String password}) async {
     try {
       var result = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
+      if(result.user?.uid != null){
+         User a = await _userService.findByEmail(email).first;
+         loggedUser = a;
+      }
       return result.user;
     } on AuthException catch (e) {
       throw new AuthException(e.code, e.message);
