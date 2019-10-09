@@ -156,7 +156,7 @@ class _AppDrawerState extends State<AppDrawer> {
             ],
           ),
           DrawerListItem(
-              onTap: () => {},
+              onTap: () => Navigator.pushNamed(context, Router.logoutRoute),
               text: 'Sair',
               color: DefaultGrennColor,
               textAlign: TextAlign.center,

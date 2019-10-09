@@ -36,7 +36,9 @@ class User extends BaseModel{
     this.username = document.data['username'];
     this.password = document.data['password'];
     this.pets = document.data['pets'];
+    this.pets = this.pets.cast<String>();
     this.petsHistory = document.data['petsHistory'];
+    this.petsHistory = this.petsHistory.cast<String>();
     this.profilePicture = document.data['profilePicture'];
     Uint8List bytes = base64.decode(this.profilePicture);
     this.profileImage = File.fromRawPath(bytes);

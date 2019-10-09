@@ -1,44 +1,39 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:meau/models/UserModel.dart';
+import 'package:meau/models/AnimalModel.dart';
 import 'package:meau/services/AuthService.dart';
+import 'package:meau/services/UserService.dart';
 
 
-class UserService{
-  CollectionReference _collection = Firestore.instance.collection('users');
-  static AuthService auth;
+class AnimalService{
+  CollectionReference _collection = Firestore.instance.collection('animals');
+  static AuthService _auth;
+  static UserService _userService;
 
-  static final UserService instance = UserService._internal();
+  static final AnimalService instance = AnimalService._internal();
 
-  factory UserService() {
-    auth = AuthService.instance;
+  factory AnimalService() {
+    _auth = AuthService.instance;
+    _userService = UserService.instance;
     return instance;
   }
 
-  UserService._internal();
+  AnimalService._internal();
 
-  Stream<User> findById(String _documentId)  => _collection.where('_documentId', isEqualTo: _documentId).limit(1).snapshots().map(
-    (query) => User.fromMap(query.documents[0])
+  Stream<Animal> findById(String _documentId)  => _collection.where('_documentId', isEqualTo: _documentId).limit(1).snapshots().map(
+    (query) => Animal.fromMap(query.documents[0])
   );
-  Stream<User> findByEmail(String email)  => _collection.where('email', isEqualTo: email).limit(1).snapshots().map(
-    (query) => User.fromMap(query.documents[0])
-  );
-
-  Stream<bool> emailAlreadyRegister(String email) => _collection.where('email', isEqualTo: email).limit(1).snapshots().map(
-    (query) =>  (query.documents.length > 0) ? true : false
+  Stream<Animal> findByOwnerId(String ownerId)  => _collection.where('owner', isEqualTo: ownerId).limit(1).snapshots().map(
+    (query) => Animal.fromMap(query.documents[0])
   );
 
-  void add(User user){
+  void add(Animal animal) async {
     try{
-      emailAlreadyRegister(user.email).listen((result) async {
-        if(result == false){
-            var firebaseUser = await auth.createUser(email: user.email, password: user.password);
-            if(firebaseUser?.uid != null){
-              user.pets = new List<DocumentSnapshot>();
-              _collection.add(user.toMap());
-            }
-          }
-      });
+      if(_auth.isLogged() == false){
+        animal.owner = _auth.loggedUser.documentID;
+        var newAnimal = await _collection.add(animal.toMap());
+        _userService.addPet(newAnimal.documentID);
+      }
     }
     on AuthException catch (e) {
       throw new AuthException(e.code, e.message);
@@ -47,14 +42,14 @@ class UserService{
     }
   } 
 
-  void update(String documentId, User user) =>
-      _collection.document(documentId).updateData(user.toMap());
+  void update(String documentId, Animal Animal) =>
+      _collection.document(documentId).updateData(Animal.toMap());
 
   void delete(String documentId) => _collection.document(documentId).delete();
 
-  Stream<List<User>> get people =>(
+  Stream<List<Animal>> get people =>(
     _collection.snapshots().map((query) => query.documents
-      .map<User>((document) => User.fromMap(document))
+      .map<Animal>((document) => Animal.fromMap(document))
       .toList())
   );
 

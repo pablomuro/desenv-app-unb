@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:meau/Common/AssetsConstants.dart';
 import 'package:meau/Common/TextsConstants.dart';
 import 'package:meau/routes.dart';
+import 'package:meau/services/AuthService.dart';
 import 'package:meau/style.dart';
 import 'package:meau/widgets/AppDrawer/AppDrawer.dart';
 import 'package:meau/widgets/YellownFlatButton.dart';
 
 
 class HomeScreen extends StatelessWidget {
+
+  final AuthService _auth = AuthService.instance;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,12 +47,7 @@ class HomeScreen extends StatelessWidget {
               text: 'Cadastrar Animal',
             ),
             SizedBox(height: 44.0),
-            GestureDetector(
-              onTap: () => Navigator.pushNamed(context, Router.loginRoute),
-              child: Text('login',
-                  style: TextStyle(
-                      color: DefaultGrennColor, fontSize: MediumTextSize)),
-            ),
+            getLoginWidget(context),
             SizedBox(height: 68.0),
             SizedBox(
               width: 122.0,
@@ -58,5 +57,16 @@ class HomeScreen extends StatelessWidget {
           ])))
           ],
         ));
+  }
+  Widget getLoginWidget(context) {
+  if(_auth.loggedUser == null){
+    return (GestureDetector(
+              onTap: () => Navigator.pushNamed(context, Router.loginRoute),
+              child: Text('login',
+                  style: TextStyle(
+                      color: DefaultGrennColor, fontSize: MediumTextSize)),
+            ));
+    }
+    return Container();
   }
 }

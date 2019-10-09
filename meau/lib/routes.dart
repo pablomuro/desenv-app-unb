@@ -15,6 +15,7 @@ class Router {
   static const String splashRoute = '/';
   static const String homeRoute = '/home';
   static const String loginRoute = '/login';
+  static const String logoutRoute = '/logout';
   static const String registerRoute = '/register';
   static const String legalRoute = '/legal';
   static const String termosRoute = '/termos';
@@ -57,6 +58,9 @@ class Router {
       case dicasRoute:
         // var data = settings.arguments as String;
         return MaterialPageRoute(builder: (_) => DicasScreen());
+      case logoutRoute:
+        _auth.logout();
+        return MaterialPageRoute(builder: (_) => HomeScreen());
       default:
         // var data = settings.arguments as String;
         return MaterialPageRoute(builder: (_) => HomeScreen());

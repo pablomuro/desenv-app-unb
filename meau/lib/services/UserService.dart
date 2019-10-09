@@ -6,12 +6,14 @@ import 'package:meau/services/AuthService.dart';
 
 class UserService{
   CollectionReference _collection = Firestore.instance.collection('users');
-  static AuthService auth;
+  static AuthService _auth;
+  static User currentUser;
+  
 
   static final UserService instance = UserService._internal();
 
   factory UserService() {
-    auth = AuthService.instance;
+    _auth = AuthService.instance;
     return instance;
   }
 
@@ -32,9 +34,9 @@ class UserService{
     try{
       emailAlreadyRegister(user.email).listen((result) async {
         if(result == false){
-            var firebaseUser = await auth.createUser(email: user.email, password: user.password);
+            var firebaseUser = await _auth.createUser(email: user.email, password: user.password);
             if(firebaseUser?.uid != null){
-              user.pets = new List<DocumentSnapshot>();
+              user.pets = new List<String>();
               _collection.add(user.toMap());
             }
           }
@@ -45,7 +47,12 @@ class UserService{
     } on Exception catch (e){
       throw new Exception(e);
     }
-  } 
+  }
+
+  void addPet(String petId){
+    _auth.loggedUser.pets.add(petId);
+    _collection.document(_auth.loggedUser.documentID).updateData(_auth.loggedUser.toMap());
+  }
 
   void update(String documentId, User user) =>
       _collection.document(documentId).updateData(user.toMap());

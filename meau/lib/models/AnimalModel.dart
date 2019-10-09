@@ -6,6 +6,7 @@ import 'dart:convert';
 
 class Animal extends BaseModel{
   String _documentId;
+  HelpAs helpAs;
   String name;
   AnimalType type;
   AnimalSex sex;
@@ -16,7 +17,7 @@ class Animal extends BaseModel{
   List<String> needs;
   String goals;
   String about;
-  dynamic owner;
+  String owner;
   String animalPicture;
   File animalImage;
 
@@ -24,6 +25,7 @@ class Animal extends BaseModel{
     _documentId = document.documentID;
 
     this.name = document.data['name'];
+    this.helpAs = document.data['helpAs'];
     this.type = document.data['type'];
     this.sex = document.data['sex'];
     this.size = document.data['size'];
@@ -45,6 +47,7 @@ class Animal extends BaseModel{
     var map = new Map<String, dynamic>();
 
     map['name'] = this.name;
+    map['helpAs'] = this.helpAs;
     map['type'] = this.type;
     map['sex'] = this.sex;
     map['size'] = this.size;
@@ -63,6 +66,12 @@ class Animal extends BaseModel{
   @override
   String documentId() => _documentId;
 
+}
+
+enum HelpAs{
+  Adoption,
+  Sponsor,
+  Help
 }
 
 enum AnimalType{
