@@ -34,3 +34,14 @@ https://heartbeat.fritz.ai/firebase-user-authentication-in-flutter-1635fb175675
 https://fireship.io/lessons/flutter-firebase-google-oauth-firestore/
 https://dev.to/aaronksaunders/simple-firebase-login-flow-in-flutter-now-firebase-23nk
 
+-- block with firebase --
+https://www.youtube.com/watch?v=_j7yKt3vivk
+https://www.youtube.com/watch?v=vFxk_KJCqgk
+https://www.youtube.com/watch?v=nxu4bMpPvCQ
+https://medium.com/flutterando/seu-primeiro-crud-com-flutter-e-firestore-parte-1-be3e9392a301 
+https://github.com/pedrobarbiero/humanresources
+
+https://www.c-sharpcorner.com/article/firebase-firestore-crud-operation-in-flutter/
+https://www.c-sharpcorner.com/article/firebase-firestore-crud-operation-in-flutter/
+https://zaiste.net/flutter-in-practice/
+https://stackoverflow.com/questions/46145472/how-to-convert-base64-string-into-image-with-flutter

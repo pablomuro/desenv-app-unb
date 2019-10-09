@@ -5,7 +5,6 @@ import 'package:meau/style.dart';
 import 'package:meau/widgets/AppDrawer/AppDrawer.dart';
 
 class RegisterScreen extends StatelessWidget {
-  static const BottomSpace = 8.0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
