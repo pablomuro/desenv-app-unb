@@ -341,12 +341,6 @@ class CadastroAnimalFormState extends State<CadastroAnimalForm> {
                       },
                     ),
                     Text("Timido"),
-                    Checkbox(
-                      value: false,
-                      onChanged: (bool newValue) {
-                      },
-                    ),
-                    Text("Calmo")
                   ],
               ),
               SizedBox(height: 8.0),
@@ -358,7 +352,19 @@ class CadastroAnimalFormState extends State<CadastroAnimalForm> {
                       onChanged: (bool newValue) {
                       },
                     ),
+                    Text("Calmo"),
+                    Checkbox(
+                      value: false,
+                      onChanged: (bool newValue) {
+                      },
+                    ),
                     Text("Guarda"),
+                  ],
+              ),
+              SizedBox(height: 8.0),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
                     Checkbox(
                       value: false,
                       onChanged: (bool newValue) {
