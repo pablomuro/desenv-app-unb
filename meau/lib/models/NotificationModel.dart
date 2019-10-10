@@ -1,38 +1,58 @@
-import 'dart:io';
-import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meau/models/BaseModel.dart';
-import 'dart:convert';
 
 class Notification extends BaseModel{
   Notification();
 
   String documentID;
-  String name;
-  String email;
-  String state;
+  String userTo;
+  String userFrom;
+  String pet;
+  NotificationType type;
+  String seen;
+  NotificationResponse response;
 
   
   Notification.fromMap(DocumentSnapshot document) {
     documentID = document.documentID;
 
-    this.name = document.data['name'];
-    this.email = document.data['email'];
-    this.state = document.data['state'];
-    
+    this.userTo = document.data['userTo'];
+    this.userFrom = document.data['userFrom'];
+    this.pet = document.data['pet'];
+    this.type = document.data['type'];
+    this.seen = document.data['seen'];
+    this.response = document.data['response'];
+
+
+    // FRk9XVbbYSt2O2PfJZGA    - teste
+
+    // YSYIeX58agIJDtHS1TYc  -- pablo
   }
 
   @override
   toMap() {
     var map = new Map<String, dynamic>();
 
-    map['name'] = this.name;
-    map['email'] = this.email;
-    map['state'] = this.state;
+    map['userTo'] = this.userTo;
+    map['userFrom'] = this.userFrom;
+    map['pet'] = this.pet;
+    map['type'] = this.type;
+    map['seen'] = this.seen;
+    map['response'] = this.response;
 
     return map;
   }
 
   @override
   String documentId() => documentID;
+}
+
+enum NotificationType{
+  Request,
+  Response
+}
+
+enum NotificationResponse{
+  Accept,
+  Deny
 }
