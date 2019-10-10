@@ -29,7 +29,7 @@ class LogInScreen extends StatelessWidget {
                 LoginForm(),
                 SizedBox(height: 72.0),
                 Container(
-                    width: 232.0,
+                    width: 240.0,
                     height: 40.0,
                     child: RaisedButton.icon(
                       textColor: Colors.white,
@@ -42,7 +42,7 @@ class LogInScreen extends StatelessWidget {
                     )),
                 SizedBox(height: 8.0),
                 Container(
-                    width: 232.0,
+                    width: 240.0,
                     height: 40.0,
                     child: RaisedButton.icon(
                       textColor: Colors.white,
