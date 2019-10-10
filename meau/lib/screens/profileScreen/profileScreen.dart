@@ -43,7 +43,7 @@ class ProfileScreen extends StatelessWidget {
                   padding: EdgeInsets.only(bottom: 24.0),
                   child: Center(
                     child: Text(
-                      user.name,
+                      user.name != null ? user.name : ProfileName ,
                       style: TextStyle(
                           fontSize: MediumTextSize,
                           color: DefaultGrayColor),
@@ -87,7 +87,7 @@ class ProfileScreen extends StatelessWidget {
                   padding: EdgeInsets.only(bottom: 24.0),
                   child: Center(
                     child: Text(
-                      user.email,
+                      user.email != null ? user.email : ProfileEmail,
                       style: TextStyle(
                           fontSize: MediumTextSize,
                           color: DefaultGrayColor),
@@ -131,7 +131,7 @@ class ProfileScreen extends StatelessWidget {
                   padding: EdgeInsets.only(bottom: 24.0),
                   child: Center(
                     child: Text(
-                      ProfileAddress,
+                      user.adrress != null ? user.adrress : ProfileAddress,
                       style: TextStyle(
                           fontSize: MediumTextSize,
                           color: DefaultGrayColor),
@@ -153,7 +153,7 @@ class ProfileScreen extends StatelessWidget {
                   padding: EdgeInsets.only(bottom: 24.0),
                   child: Center(
                     child: Text(
-                      ProfilePhone,
+                      user.phone != null ? user.phone : ProfilePhone ,
                       style: TextStyle(
                           fontSize: MediumTextSize,
                           color: DefaultGrayColor),
