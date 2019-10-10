@@ -65,7 +65,7 @@ class ProfileScreen extends StatelessWidget {
                   padding: EdgeInsets.only(bottom: 24.0),
                   child: Center(
                     child: Text(
-                      ProfileAge,
+                      user.age.toString() != null ? user.age.toString() : ProfileAge,
                       style: TextStyle(
                           fontSize: MediumTextSize,
                           color: DefaultGrayColor),
