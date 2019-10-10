@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:meau/screens/dicasScreen/texts.dart';
 import 'package:meau/style.dart';
 import 'package:meau/widgets/AppDrawer/AppDrawer.dart';
+import 'package:meau/widgets/CustomAppBar/CustomAppBar.dart';
 
 class DicasScreen extends StatelessWidget {
   static const BottomSpace = 8.0;
@@ -9,13 +10,14 @@ class DicasScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
+        appBar: CustomAppBar(
             title: Text('Dicas',
                 style: TextStyle(
-                    color: DefaultButtonColor, fontSize: AppTitleTextSize)),
+                color: DefaultButtonColor, fontSize: AppTitleTextSize)
+            ),
             backgroundColor: DefaultGrennColor,
-            elevation: 2,
-            iconTheme: IconThemeData(color: DefaultButtonColor)),
+            iconThemeColor: DefaultButtonColor
+        ),
         drawer: AppDrawer(),
         body: Container(
             child: ListView(children: [

@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:meau/screens/logInScreen/loginForm.dart';
 import 'package:meau/style.dart';
 import 'package:meau/widgets/AppDrawer/AppDrawer.dart';
+import 'package:meau/widgets/CustomAppBar/CustomAppBar.dart';
 
 class LogInScreen extends StatelessWidget {
   static const BottomSpace = 8.0;
@@ -10,13 +11,14 @@ class LogInScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
+        appBar: CustomAppBar(
             title: Text('Login',
-                style: TextStyle(
-                    color: DefaultButtonColor, fontSize: AppTitleTextSize)),
+              style: TextStyle(
+              color: DefaultButtonColor, fontSize: AppTitleTextSize)
+            ),
             backgroundColor: DefaultGrennColor,
-            elevation: 2,
-            iconTheme: IconThemeData(color: DefaultButtonColor)),
+            iconThemeColor: DefaultButtonColor
+        ),
         drawer: AppDrawer(),
         body: Container(
             child: ListView(children: [

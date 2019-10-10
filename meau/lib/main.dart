@@ -4,7 +4,6 @@ import 'package:meau/blocs/AnimalBloc.dart';
 import 'package:meau/blocs/UserBloc.dart';
 import 'package:meau/routes.dart';
 import 'package:meau/theme.dart';
-import 'firebase_notification_handler.dart';
 
 void main() => runApp(MyApp());
 

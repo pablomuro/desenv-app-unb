@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:meau/screens/privacidadeScreen/texts.dart';
 import 'package:meau/style.dart';
 import 'package:meau/widgets/AppDrawer/AppDrawer.dart';
+import 'package:meau/widgets/CustomAppBar/CustomAppBar.dart';
 
 class PrivacidadeScreen extends StatelessWidget {
   static const BottomSpace = 8.0;
@@ -9,13 +10,14 @@ class PrivacidadeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-            title: Text('Privacidade',
-                style: TextStyle(
-                    color: DefaultButtonColor, fontSize: AppTitleTextSize)),
-            backgroundColor: DefaultGrennColor,
-            elevation: 2,
-            iconTheme: IconThemeData(color: DefaultButtonColor)),
+        appBar: CustomAppBar(
+          title: Text('Privacidade',
+            style: TextStyle(
+            color: DefaultButtonColor, fontSize: AppTitleTextSize)
+          ),
+          backgroundColor: DefaultGrennColor,
+          iconThemeColor: DefaultButtonColor
+        ),
         drawer: AppDrawer(),
         body: Container(
             child: ListView(children: [

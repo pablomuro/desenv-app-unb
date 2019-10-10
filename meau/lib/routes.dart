@@ -44,6 +44,7 @@ class Router {
         // var data = settings.arguments as String;
         return MaterialPageRoute(builder: (_) => LogInScreen());
       case registerRoute:
+      if(_auth.isLogged()) return MaterialPageRoute(builder: (_) => ProfileScreen());
         // var data = settings.arguments as String;
         return MaterialPageRoute(builder: (_) => RegisterScreen());
       case legalRoute:
@@ -62,6 +63,7 @@ class Router {
         _auth.logout();
         return MaterialPageRoute(builder: (_) => HomeScreen());
         case profileRoute:
+        if(!_auth.isLogged()) return MaterialPageRoute(builder: (_) => OpsScreen());
         // var data = settings.arguments as String;
         return MaterialPageRoute(builder: (_) => ProfileScreen());
       default:

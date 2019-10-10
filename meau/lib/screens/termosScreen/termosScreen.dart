@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:meau/screens/termosScreen/texts.dart';
 import 'package:meau/style.dart';
 import 'package:meau/widgets/AppDrawer/AppDrawer.dart';
+import 'package:meau/widgets/CustomAppBar/CustomAppBar.dart';
 
 class TermosScreen extends StatelessWidget {
   static const BottomSpace = 8.0;
@@ -9,13 +10,15 @@ class TermosScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-            title: Text('Termos',
-                style: TextStyle(
-                    color: DefaultButtonColor, fontSize: AppTitleTextSize)),
-            backgroundColor: DefaultGrennColor,
-            elevation: 2,
-            iconTheme: IconThemeData(color: DefaultButtonColor)),
+        appBar: CustomAppBar(
+          title: Text('Termos',
+            style: TextStyle(
+            color: DefaultButtonColor, fontSize: AppTitleTextSize)
+          ),
+          backgroundColor: DefaultGrennColor,
+          elevation: 2,
+          iconThemeColor: DefaultButtonColor
+        ),
         drawer: AppDrawer(),
         body: Container(
             child: ListView(children: [

@@ -5,6 +5,7 @@ import 'package:meau/routes.dart';
 import 'package:meau/services/AuthService.dart';
 import 'package:meau/style.dart';
 import 'package:meau/widgets/AppDrawer/AppDrawer.dart';
+import 'package:meau/widgets/CustomAppBar/CustomAppBar.dart';
 import 'package:meau/widgets/YellownFlatButton.dart';
 
 
@@ -16,10 +17,11 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-            backgroundColor: Colors.white,
-            elevation: 0,
-            iconTheme: IconThemeData(color: DefaultGrennColor)),
+        appBar: CustomAppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          iconThemeColor: DefaultGrennColor
+        ),
         drawer: AppDrawer(),
         body: ListView(
                   children: [Container(
@@ -54,7 +56,7 @@ class HomeScreen extends StatelessWidget {
               height: 44.0,
               child: Image.asset(MeuaLogoGreen),
             ),
-          ])))
+          ]))),
           ],
         ));
   }

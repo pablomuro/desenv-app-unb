@@ -3,6 +3,7 @@ import 'package:meau/screens/profileScreen/texts.dart';
 import 'package:meau/services/AuthService.dart';
 import 'package:meau/style.dart';
 import 'package:meau/widgets/AppDrawer/AppDrawer.dart';
+import 'package:meau/widgets/CustomAppBar/CustomAppBar.dart';
 import 'package:meau/widgets/GreenBtn.dart';
 import 'package:meau/models/UserModel.dart';
 
@@ -16,13 +17,14 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-            title: Text(user.name,
-                style: TextStyle(
-                    color: DefaultButtonColor, fontSize: AppTitleTextSize)),
-            backgroundColor: DefaultGrennColor,
-            elevation: 2,
-            iconTheme: IconThemeData(color: DefaultButtonColor)),
+        appBar: CustomAppBar(
+          title: Text(user.name,
+            style: TextStyle(
+            color: DefaultButtonColor, fontSize: AppTitleTextSize)
+          ),
+          backgroundColor: DefaultGrennColor,
+          iconThemeColor: DefaultButtonColor
+        ),
         drawer: AppDrawer(),
         body: Center(
             child: ListView(

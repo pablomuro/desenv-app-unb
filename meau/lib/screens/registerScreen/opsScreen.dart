@@ -3,19 +3,20 @@ import 'package:meau/routes.dart';
 import 'package:meau/screens/registerScreen/texts.dart';
 import 'package:meau/style.dart';
 import 'package:meau/widgets/AppDrawer/AppDrawer.dart';
+import 'package:meau/widgets/CustomAppBar/CustomAppBar.dart';
 
 class OpsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-            title: Text('Cadastro',
-                style: TextStyle(
-                    color: DefaultButtonColor, fontSize: AppTitleTextSize)),
-            backgroundColor: DefaultGrennColor,
-            elevation: 2,
-            iconTheme: IconThemeData(color: DefaultButtonColor)),
+        appBar: CustomAppBar(
+          title: Text('Cadastro',
+            style: TextStyle(
+            color: DefaultButtonColor, fontSize: AppTitleTextSize)),
+          backgroundColor: DefaultGrennColor,
+          iconThemeColor: DefaultButtonColor
+        ),
         drawer: AppDrawer(),
         body: Container(
             child: ListView(
