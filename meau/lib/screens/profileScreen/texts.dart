@@ -6,3 +6,4 @@ const String ProfileAddress = "Endereço";
 const String ProfilePhone = "Telefone";
 const String ProfileUserName = "Nome de usuário";
 const String ProfileHistory = "Histórico";
+

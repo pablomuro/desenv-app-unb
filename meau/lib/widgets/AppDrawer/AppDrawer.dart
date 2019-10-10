@@ -47,6 +47,7 @@ class _AppDrawerState extends State<AppDrawer> {
                     DrawerListItem(
                       text: 'Meu perfil',
                       onTap: () {
+                        Navigator.pushNamed(context, Router.profileRoute);
                         // Update the state of the app.
                       },
                     ),
