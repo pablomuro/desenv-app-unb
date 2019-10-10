@@ -20,6 +20,7 @@ const Color DefaultLightYellowColor = Color(0xfffee29b);
 const Color DefaultStrongreYellowColor = Color(0xfff7a800);
 const Color DefaultTextColor = Color(0xff757575);
 const Color DefaultButtonColor = Color(0xff434343);
+const Color DefaultGrayColor = Color(0xff757575);
 
 const Color MenuInfoBgColor = Color(0xffcfe9e5);
 const Color MenuConfigBgColor = Color(0xffe6e7e8);
@@ -59,4 +60,9 @@ const TextIntroStyle = TextStyle(
 const TextYellownFlatButtonStyle = TextStyle(
   fontSize: SmallTextSize,
   color: DefaultButtonColor
+);
+
+const TextGreenBtn = TextStyle(
+  fontSize: SmallTextSize,
+  color: DefaultGrayColor
 );

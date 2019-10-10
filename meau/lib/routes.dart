@@ -10,6 +10,7 @@ import 'package:meau/screens/splashScreen.dart';
 import 'package:meau/screens/logInScreen/logInScreen.dart';
 import 'package:meau/screens/cadastroAnimalScreen/cadastroAnimal.dart';
 import 'package:meau/services/AuthService.dart';
+import 'package:meau/screens/profileScreen/profileScreen.dart';
 
 class Router {
   static const String splashRoute = '/';
@@ -23,8 +24,7 @@ class Router {
   static const String dicasRoute = '/dicas';
   static const String cadastroAnimal = '/cadastroAnimal';
   static const String opsRoute = '/ops';
-
-
+  static const String profileRoute = '/perfil';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
       AuthService _auth = AuthService.instance;
@@ -61,6 +61,9 @@ class Router {
       case logoutRoute:
         _auth.logout();
         return MaterialPageRoute(builder: (_) => HomeScreen());
+        case profileRoute:
+        // var data = settings.arguments as String;
+        return MaterialPageRoute(builder: (_) => ProfileScreen());
       default:
         // var data = settings.arguments as String;
         return MaterialPageRoute(builder: (_) => HomeScreen());
