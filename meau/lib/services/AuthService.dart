@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/services.dart';
 import 'package:meau/models/UserModel.dart';
 import 'package:meau/services/UserService.dart';
 class AuthService{
@@ -53,6 +52,16 @@ class AuthService{
     } on AuthException catch (e) {
       throw new AuthException(e.code, e.message);
     } on Exception catch (e){
+      dynamic error = e;
+      if(error?.code != null){
+        if(error.code == 'ERROR_INVALID_EMAIL'){
+          throw new Exception('O endereço de email está mal formatado');
+        }
+        if(error.code == 'ERROR_USER_NOT_FOUND'){
+          throw new Exception('Usuário não encontrado');
+        }
+        throw new Exception(error.message);
+      }
       throw new Exception(e);
     }
   }

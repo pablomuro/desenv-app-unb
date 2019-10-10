@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:meau/routes.dart';
 import 'package:meau/services/AuthService.dart';
-import 'dart:async';
+import 'package:meau/widgets/errorDialog.dart';
 
 class LoginForm extends StatefulWidget {
 
@@ -29,10 +29,9 @@ class LoginFormState extends State<LoginForm> {
         if(_authUser?.uid != null){
           Navigator.pushNamed(context, Router.homeRoute);
         }
-      } on AuthException catch (error) {
-        return _buildErrorDialog(context, error.message);
-      } on Exception catch (error) {
-        return _buildErrorDialog(context, error.toString());
+      } on Exception catch (e) {
+        dynamic error = e;
+        return ErrorDialog.buildErrorDialog(context, error.message);
       }
     }
   }
@@ -77,25 +76,3 @@ String notNullValidator(value) {
   }
   return null;
 }
-
-
-
-Future _buildErrorDialog(BuildContext context, _message) {
-  return showDialog(
-    builder: (context) {
-      return AlertDialog(
-        title: Text('Error Message'),
-        content: Text(_message),
-        actions: <Widget>[
-          FlatButton(
-              child: Text('Cancel'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              })
-        ],
-      );
-    },
-    context: context,
-  );
-}
-

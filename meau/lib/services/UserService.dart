@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/services.dart';
 import 'package:meau/models/UserModel.dart';
 import 'package:meau/services/AuthService.dart';
 
@@ -32,18 +31,29 @@ class UserService{
   );
 
   Future<bool> add(User user) async {
-      bool result = await emailAlreadyRegister(user.email).first;
-      if(result == true){
-        var firebaseUser = await _auth.createUser(email: user.email, password: user.password);
-        if(firebaseUser?.uid != null){
-          user.pets = new List<String>();
-          user.petsHistory = new List<String>();
-          _collection.add(user.toMap());
-
-          return true;
-        }
+    try{
+     FirebaseUser firebaseUser = await _auth.createUser(email: user.email, password: user.password);
+     if(firebaseUser?.uid != null){
+        user.pets = new List<String>();
+        user.petsHistory = new List<String>();
+        _collection.add(user.toMap());
+        
+        return true;
       }
-      throw new Exception('Email já em uso');
+      return false;
+    } on AuthException catch (e) {
+      throw new AuthException(e.code, e.message);
+    } on Exception catch(e){
+      dynamic error = e;
+      if(error?.code != null){
+        if(error.code == 'ERROR_EMAIL_ALREADY_IN_USE'){
+          throw new Exception('O endereço de email já está em uso');
+        }
+        throw new Exception(error.message);
+      }
+      throw new Exception(e);
+    }
+      
   }
 
   void addPet(String petId){

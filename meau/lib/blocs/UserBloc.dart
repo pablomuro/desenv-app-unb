@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:bloc_pattern/bloc_pattern.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meau/models/UserModel.dart';
 import 'package:meau/services/UserService.dart';
 import 'package:rxdart/rxdart.dart';
@@ -53,12 +52,9 @@ class UserBloc extends BlocBase {
         _repository.update(_user.documentID, _user);
       }
       return true;
-    } on AuthException catch (e) {
-      throw new AuthException(e.code, e.message);
     } on Exception catch (e){
       throw new Exception(e);
     }
-    
   }
 
   String validatePassword(){

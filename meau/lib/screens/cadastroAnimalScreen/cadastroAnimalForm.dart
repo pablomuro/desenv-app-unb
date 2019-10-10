@@ -8,6 +8,7 @@ import 'package:meau/models/AnimalModel.dart';
 import 'package:meau/routes.dart';
 import 'package:meau/style.dart';
 import 'package:meau/widgets/YellownFlatButton.dart';
+import 'package:meau/widgets/errorDialog.dart';
 
 
 class CadastroAnimalForm extends StatefulWidget {
@@ -42,8 +43,9 @@ class CadastroAnimalFormState extends State<CadastroAnimalForm> {
       try{
         _bloc.insertOrUpdate();
         Navigator.pushNamed(context, Router.homeRoute); 
-      } on Exception catch (error) {
-        return _buildErrorDialog(context, error.toString());
+      } on Exception catch (e) {
+        dynamic error = e;
+        return ErrorDialog.buildErrorDialog(context, error.message.message);
       }
     }
   }
@@ -525,24 +527,5 @@ class CadastroAnimalFormState extends State<CadastroAnimalForm> {
       }
     );
   }
-}
-
-Future _buildErrorDialog(BuildContext context, _message) {
-  return showDialog(
-    builder: (context) {
-      return AlertDialog(
-        title: Text('Error Message'),
-        content: Text(_message),
-        actions: <Widget>[
-          FlatButton(
-              child: Text('Cancel'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              })
-        ],
-      );
-    },
-    context: context,
-  );
 }
 

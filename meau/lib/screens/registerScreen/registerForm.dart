@@ -7,6 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:meau/blocs/UserBloc.dart';
 import 'package:meau/models/UserMock.dart';
 import 'package:meau/models/UserModel.dart';
+import 'package:meau/widgets/errorDialog.dart';
 import 'package:meau/routes.dart';
 import 'package:meau/style.dart';
 
@@ -26,6 +27,7 @@ class RegisterFormState extends State<RegisterForm> {
   @override
   void initState() {
     var mock = new UserMock();
+    // TODO - remover mock
     // _bloc.setUser(mock.user);
     super.initState();
   }
@@ -40,15 +42,16 @@ class RegisterFormState extends State<RegisterForm> {
   register() async {
     final form = _formKey.currentState;
 
-    if (true) {
-      // form.save(); form.validate()
+    if (form.validate()) {
+      form.save(); 
       try{
         bool retorno = await _bloc.insertOrUpdate();
         if(retorno){
           Navigator.pushNamed(context, Router.homeRoute); 
         }
-      } on Exception catch (error) {
-        return _buildErrorDialog(context, error.toString());
+      } on Exception catch (e) {
+        dynamic error = e;
+        return ErrorDialog.buildErrorDialog(context, error.message.message);
       }
     }
   }
@@ -248,24 +251,5 @@ class RegisterFormState extends State<RegisterForm> {
       }
     );
   }
-}
-
-Future _buildErrorDialog(BuildContext context, _message) {
-  return showDialog(
-    builder: (context) {
-      return AlertDialog(
-        title: Text('Error Message'),
-        content: Text(_message),
-        actions: <Widget>[
-          FlatButton(
-              child: Text('Cancel'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              })
-        ],
-      );
-    },
-    context: context,
-  );
 }
 
