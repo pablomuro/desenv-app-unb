@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
 import 'package:meau/models/UserModel.dart';
 import 'package:meau/services/AuthService.dart';
 
@@ -30,23 +31,19 @@ class UserService{
     (query) =>  (query.documents.length > 0) ? true : false
   );
 
-  void add(User user){
-    try{
-      emailAlreadyRegister(user.email).listen((result) async {
-        if(result == false){
-            var firebaseUser = await _auth.createUser(email: user.email, password: user.password);
-            if(firebaseUser?.uid != null){
-              user.pets = new List<String>();
-              _collection.add(user.toMap());
-            }
-          }
-      });
-    }
-    on AuthException catch (e) {
-      throw new AuthException(e.code, e.message);
-    } on Exception catch (e){
-      throw new Exception(e);
-    }
+  Future<bool> add(User user) async {
+      bool result = await emailAlreadyRegister(user.email).first;
+      if(result == true){
+        var firebaseUser = await _auth.createUser(email: user.email, password: user.password);
+        if(firebaseUser?.uid != null){
+          user.pets = new List<String>();
+          user.petsHistory = new List<String>();
+          _collection.add(user.toMap());
+
+          return true;
+        }
+      }
+      throw new Exception('Email já em uso');
   }
 
   void addPet(String petId){

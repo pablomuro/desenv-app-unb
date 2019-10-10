@@ -44,14 +44,14 @@ class UserBloc extends BlocBase {
 
   File getPicture() => _userController.value?.profileImage;
 
-  bool insertOrUpdate() {
+  Future<bool> insertOrUpdate() async {
     try{
       if (_user.documentID?.isEmpty ?? true) {
-        _repository.add(_user);
+        bool retorno = await _repository.add(_user);
+        return retorno;
       } else {
         _repository.update(_user.documentID, _user);
       }
-
       return true;
     } on AuthException catch (e) {
       throw new AuthException(e.code, e.message);

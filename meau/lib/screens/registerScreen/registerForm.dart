@@ -5,6 +5,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:meau/blocs/UserBloc.dart';
+import 'package:meau/models/UserMock.dart';
 import 'package:meau/models/UserModel.dart';
 import 'package:meau/routes.dart';
 import 'package:meau/style.dart';
@@ -24,6 +25,8 @@ class RegisterFormState extends State<RegisterForm> {
 
   @override
   void initState() {
+    var mock = new UserMock();
+    // _bloc.setUser(mock.user);
     super.initState();
   }
 
@@ -37,11 +40,13 @@ class RegisterFormState extends State<RegisterForm> {
   register() async {
     final form = _formKey.currentState;
 
-    if (form.validate()) {
-      form.save();
+    if (true) {
+      // form.save(); form.validate()
       try{
-        _bloc.insertOrUpdate();
-        Navigator.pushNamed(context, Router.homeRoute); 
+        bool retorno = await _bloc.insertOrUpdate();
+        if(retorno){
+          Navigator.pushNamed(context, Router.homeRoute); 
+        }
       } on Exception catch (error) {
         return _buildErrorDialog(context, error.toString());
       }
@@ -78,6 +83,7 @@ class RegisterFormState extends State<RegisterForm> {
     return StreamBuilder<User>(
       stream: _bloc.userStream,
       builder: (context, snapshot) {
+        if(!snapshot.hasData) return Container();
         return Form(
             key: _formKey,
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -89,7 +95,7 @@ class RegisterFormState extends State<RegisterForm> {
                   contentPadding: EdgeInsets.only(left: 12.0, bottom: 8.0)
                 ),
                 validator: notNullValidator,
-                onChanged: (value) => _bloc.setName(value)
+                onChanged: (value) => _bloc.setName(value),
               ),
               SizedBox(height: 36.0),
               TextFormField(

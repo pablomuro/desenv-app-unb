@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
 import 'package:meau/models/UserModel.dart';
 import 'package:meau/services/UserService.dart';
 class AuthService{
@@ -36,14 +37,8 @@ class AuthService{
 
   // wrapping the firebase calls
   Future<FirebaseUser> createUser({String email, String password}) async {
-    try {
-      var result = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
-      return result.user;
-    } on AuthException catch (e) {
-      throw new AuthException(e.code, e.message);
-    } on Exception catch (e){
-      throw new Exception(e);
-    }
+    var result = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
+    return result.user;
   }
 
   // logs in the user if password matches
@@ -51,8 +46,8 @@ class AuthService{
     try {
       var result = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
       if(result.user?.uid != null){
-         User _loggedUser = await _userService.findByEmail(email).first;
-         loggedUser = _loggedUser;
+        User _loggedUser = await _userService.findByEmail(email).first;
+        loggedUser = _loggedUser;
       }
       return result.user;
     } on AuthException catch (e) {
