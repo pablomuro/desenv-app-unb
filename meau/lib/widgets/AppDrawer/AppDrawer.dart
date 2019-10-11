@@ -4,6 +4,8 @@ import 'package:meau/style.dart';
 import 'package:meau/widgets/AppDrawer/CustomExpansionTile.dart';
 import 'package:meau/widgets/AppDrawer/CustomUserAccountsDrawerHeader.dart';
 import 'package:meau/widgets/GrayText.dart';
+import 'package:meau/models/UserModel.dart';
+import 'package:meau/services/AuthService.dart';
 
 class AppDrawer extends StatefulWidget {
   @override
@@ -12,6 +14,8 @@ class AppDrawer extends StatefulWidget {
 
 class _AppDrawerState extends State<AppDrawer> {
   bool _showUserDetails = false;
+
+  User user = AuthService.instance.loggedUser;
 
   @override
   void initState() {
@@ -36,7 +40,7 @@ class _AppDrawerState extends State<AppDrawer> {
             currentAccountPicture: CircleAvatar(
               child: Text("A", style: TextStyle(fontSize: 40.0)),
             ),
-            accountName: GrayText('Dev App user'),
+            accountName: GrayText(user.name),
             onDetailsPressed: () => setState(() {
               _showUserDetails = !_showUserDetails;
             }),
