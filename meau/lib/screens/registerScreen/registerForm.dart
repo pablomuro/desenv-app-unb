@@ -35,8 +35,8 @@ class RegisterFormState extends State<RegisterForm> {
 
   Future getImage() async {
     File image = await ImagePicker.pickImage(source: ImageSource.gallery);
-    _bloc.setPicture(image);
-    _bloc.setImageStream(image);
+    _bloc.setPicture(image.readAsBytesSync());
+    _bloc.setImageStream(image.readAsBytesSync());
   }
 
   register() async {
@@ -199,7 +199,7 @@ class RegisterFormState extends State<RegisterForm> {
                         return Container(
                           width: 150.0,
                           height: 150.0,
-                          child: Image.file(snapshot.data)
+                          child: Image.memory(snapshot.data)
                         );
                       }
                       return Container(

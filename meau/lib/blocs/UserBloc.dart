@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:meau/models/UserModel.dart';
@@ -7,7 +8,7 @@ import 'package:rxdart/rxdart.dart';
 
 class UserBloc extends BlocBase {
   User _user = new User();
-  File _image;
+  Uint8List _image;
 
   UserBloc() {
     _userController.listen((value) => _user = value);
@@ -25,9 +26,9 @@ class UserBloc extends BlocBase {
   Stream<User> get userStream => _userController.stream;
   void setUserStream(User value) => _userController.sink.add(value);
 
-  var _imageController = BehaviorSubject<File>();
-  Stream<File> get imageStrem => _imageController.stream;
-  void setImageStream(File value) => _imageController.sink.add(value);
+  var _imageController = BehaviorSubject<Uint8List>();
+  Stream<Uint8List> get imageStrem => _imageController.stream;
+  void setImageStream(Uint8List value) => _imageController.sink.add(value);
 
   void setName(String value) => _userController.value.name = value;
   void setAge(int value) => _userController.value.age = value;
@@ -39,9 +40,9 @@ class UserBloc extends BlocBase {
   void setUsername(String value) => _userController.value.username = value;
   void setPassword(String value) => _userController.value.password = value;
   void setConfirmPassword(String value) => _userController.value.confirmPassword = value;
-  void setPicture(File value) => _userController.value.profileImage = value;
+  void setPicture(Uint8List value) => _userController.value.profileImage = value;
 
-  File getPicture() => _userController.value?.profileImage;
+  Uint8List getPicture() => _userController.value?.profileImage;
 
   Future<bool> insertOrUpdate() async {
     try{

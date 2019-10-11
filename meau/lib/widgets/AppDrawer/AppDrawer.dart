@@ -13,6 +13,7 @@ class AppDrawer extends StatefulWidget {
 
 class _AppDrawerState extends State<AppDrawer> {
   bool _showUserDetails = false;
+  bool _isUserLogged = false;
 
   User user = AuthService.instance.loggedUser;
 
@@ -20,11 +21,14 @@ class _AppDrawerState extends State<AppDrawer> {
   void initState() {
     super.initState();
     _showUserDetails = true;
+    _isUserLogged = (user != null);
+
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    _isUserLogged = (user != null);
   }
 
   @override
@@ -37,14 +41,14 @@ class _AppDrawerState extends State<AppDrawer> {
             accountEmail: null,
             decoration: BoxDecoration(color: DefaultGrennColor),
             currentAccountPicture: CircleAvatar(
-            child: Image.file(user.profileImage),
+              child: (user != null) ? Image.memory(user.profileImage) : Text("A", style: TextStyle(fontSize: 40.0)), 
             ),
-            accountName: GrayText(user.name,),
+            accountName: (user != null) ? GrayText(user.name,) : GrayText('Anônimo'),
             onDetailsPressed: () => setState(() {
               _showUserDetails = !_showUserDetails;
             }),
           ),
-          _showUserDetails
+          _showUserDetails && _isUserLogged
               ? Column(
                   children: [
                     DrawerListItem(
@@ -75,7 +79,15 @@ class _AppDrawerState extends State<AppDrawer> {
                     ),
                   ],
                 )
-              : SizedBox(height: 0, width: 0),
+              : !_showUserDetails && _isUserLogged ? SizedBox(height: 0, width: 0) :
+              DrawerListItem(
+                text: 'Register',
+                onTap: () {
+                  Navigator.pushNamed(context, Router.registerRoute);
+                  // Update the state of the app.
+                },
+                hasBorder: false
+              ),
           CustomExpansionTile(
             backgroundColor: DefaultLightYellowColor,
             title: CustomExpansionTileTile(icon: Icons.pets, text: 'Atalhos'),
