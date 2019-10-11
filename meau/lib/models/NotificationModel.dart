@@ -9,7 +9,7 @@ class Notification extends BaseModel{
   String userFrom;
   String pet;
   NotificationType type;
-  String seen;
+  bool seen;
   NotificationResponse response;
 
   
@@ -19,9 +19,9 @@ class Notification extends BaseModel{
     this.userTo = document.data['userTo'];
     this.userFrom = document.data['userFrom'];
     this.pet = document.data['pet'];
-    this.type = document.data['type'];
+    this.type = NotificationType.values[document.data['type']];
     this.seen = document.data['seen'];
-    this.response = document.data['response'];
+    this.response = NotificationResponse.values[document.data['response']];
 
 
     // FRk9XVbbYSt2O2PfJZGA    - teste
@@ -48,11 +48,13 @@ class Notification extends BaseModel{
 }
 
 enum NotificationType{
+  None,
   Request,
   Response
 }
 
 enum NotificationResponse{
+  None,
   Accept,
   Deny
 }

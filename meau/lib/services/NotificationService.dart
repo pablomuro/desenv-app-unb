@@ -18,9 +18,9 @@ class NotificationService{
 
   NotificationService._internal();
 
-  // Stream<Notification> findById(String _documentId)  => _collection.where('_documentId', isEqualTo: _documentId).limit(1).snapshots().map(
-  //   (query) => Notification.fromMap(query.documents[0])
-  // );
+  Stream<Notification> hasNotification(String _documentId)  => _collection.where('userTo', isEqualTo: _documentId).limit(1).snapshots().map(
+    (query) => Notification.fromMap(query.documents[0])
+  );
 
   Future<bool> add(Notification notification) async {
     try{
