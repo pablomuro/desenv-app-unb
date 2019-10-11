@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meau/models/UserModel.dart';
 import 'package:meau/models/NotificationModel.dart' as Notify;
+import 'package:meau/routes.dart';
 import 'package:meau/services/AuthService.dart';
 import 'package:meau/services/NotificationService.dart';
 
@@ -17,7 +18,7 @@ class NotificationButton extends StatelessWidget {
           if(!snapshot.hasData) return Container();
           return IconButton(
             icon: Icon(Icons.notifications_active),
-            onPressed: () => {},
+            onPressed: () => Navigator.pushNamed(context, Router.notificationListRoute)
           );
         }
       );
