@@ -40,7 +40,7 @@ class _AppDrawerState extends State<AppDrawer> {
             currentAccountPicture: CircleAvatar(
               child: Text("A", style: TextStyle(fontSize: 40.0)),
             ),
-            accountName: GrayText(user.name),
+            accountName: GrayText(user.name,),
             onDetailsPressed: () => setState(() {
               _showUserDetails = !_showUserDetails;
             }),
