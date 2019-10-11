@@ -5,13 +5,13 @@ import 'package:meau/services/AuthService.dart';
 
 class NotificationService{
   CollectionReference _collection = Firestore.instance.collection('notifications');
-  static AuthService _auth;
+  static AuthService _auth = AuthService.instance;
   static User currentUser;
 
   static final NotificationService instance = NotificationService._internal();
 
   factory NotificationService() {
-    _auth = AuthService.instance;
+    // _auth = AuthService.instance;
     currentUser = _auth.loggedUser;
     return instance;
   }
@@ -46,7 +46,7 @@ class NotificationService{
   void delete(String documentId) => _collection.document(documentId).delete();
 
   Stream<List<Notification>> get notifications =>(
-    _collection.where('userTo', isEqualTo: currentUser.documentID).snapshots().map((query) => query.documents
+    _collection.where('userTo', isEqualTo: _auth.loggedUser.documentID).snapshots().map((query) => query.documents
       .map<Notification>((document) => Notification.fromMap(document))
       .toList())
   );
