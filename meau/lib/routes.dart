@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meau/screens/homeScreen.dart';
 import 'package:meau/screens/legalScreen/legalScreen.dart';
+import 'package:meau/screens/notification/notificationScreen.dart';
 import 'package:meau/screens/registerScreen/opsScreen.dart';
 import 'package:meau/screens/registerScreen/registerScreen.dart';
 import 'package:meau/screens/termosScreen/termosScreen.dart';
@@ -25,6 +26,7 @@ class Router {
   static const String cadastroAnimal = '/cadastroAnimal';
   static const String opsRoute = '/ops';
   static const String profileRoute = '/perfil';
+  static const String notificationListRoute = '/notification-list';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
       AuthService _auth = AuthService.instance;
@@ -62,10 +64,14 @@ class Router {
       case logoutRoute:
         _auth.logout();
         return MaterialPageRoute(builder: (_) => HomeScreen());
-        case profileRoute:
+      case profileRoute:
         if(!_auth.isLogged()) return MaterialPageRoute(builder: (_) => OpsScreen());
         // var data = settings.arguments as String;
         return MaterialPageRoute(builder: (_) => ProfileScreen());
+      case notificationListRoute:
+        if(!_auth.isLogged()) return MaterialPageRoute(builder: (_) => OpsScreen());
+        // var data = settings.arguments as String;
+        return MaterialPageRoute(builder: (_) => NotificationScreen());
       default:
         // var data = settings.arguments as String;
         return MaterialPageRoute(builder: (_) => HomeScreen());
