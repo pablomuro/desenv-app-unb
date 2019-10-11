@@ -6,7 +6,6 @@ import 'package:meau/widgets/AppDrawer/CustomUserAccountsDrawerHeader.dart';
 import 'package:meau/widgets/GrayText.dart';
 import 'package:meau/models/UserModel.dart';
 import 'package:meau/services/AuthService.dart';
-
 class AppDrawer extends StatefulWidget {
   @override
   _AppDrawerState createState() => _AppDrawerState();
@@ -38,7 +37,7 @@ class _AppDrawerState extends State<AppDrawer> {
             accountEmail: null,
             decoration: BoxDecoration(color: DefaultGrennColor),
             currentAccountPicture: CircleAvatar(
-              child: Text("A", style: TextStyle(fontSize: 40.0)),
+            child: Image.file(user.profileImage),
             ),
             accountName: GrayText(user.name,),
             onDetailsPressed: () => setState(() {
