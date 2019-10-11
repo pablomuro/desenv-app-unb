@@ -15,7 +15,8 @@ class NotificationScreen extends StatelessWidget {
         appBar: CustomAppBar(
           backgroundColor: Colors.white,
           elevation: 0,
-          iconThemeColor: DefaultGrennColor
+          iconThemeColor: DefaultGrennColor,
+          actions: null,
         ),
         drawer: AppDrawer(),
         body: StreamBuilder<List<Notify.Notification>>(
