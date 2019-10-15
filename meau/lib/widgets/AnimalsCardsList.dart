@@ -14,10 +14,13 @@ class AnimalsCardsList extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: CustomAppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: DefaultYellowColor,
           elevation: 0,
           iconThemeColor: DefaultGrennColor,
-          actions: null,
+          title: Text('Adotar',
+              style: TextStyle(
+              color: DefaultButtonColor, fontSize: AppTitleTextSize)
+            )
         ),
         drawer: AppDrawer(),
         body: StreamBuilder<List<Animal>>(
