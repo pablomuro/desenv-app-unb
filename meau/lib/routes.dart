@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meau/screens/cadastroAnimalScreen/cadastroAnimalSucess.dart';
 import 'package:meau/screens/homeScreen.dart';
 import 'package:meau/screens/legalScreen/legalScreen.dart';
 import 'package:meau/screens/notification/notificationScreen.dart';
@@ -12,6 +13,7 @@ import 'package:meau/screens/logInScreen/logInScreen.dart';
 import 'package:meau/screens/cadastroAnimalScreen/cadastroAnimal.dart';
 import 'package:meau/services/AuthService.dart';
 import 'package:meau/screens/profileScreen/profileScreen.dart';
+import 'package:meau/widgets/AnimalsCardsList.dart';
 
 class Router {
   static const String splashRoute = '/';
@@ -24,9 +26,11 @@ class Router {
   static const String privacidadeRoute = '/privacidade';
   static const String dicasRoute = '/dicas';
   static const String cadastroAnimal = '/cadastroAnimal';
+  static const String cadastroAnimalSucess = '/cadastroAnimalSucess';
   static const String opsRoute = '/ops';
   static const String profileRoute = '/perfil';
   static const String notificationListRoute = '/notification-list';
+  static const String adoption = '/adoption';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
       AuthService _auth = AuthService.instance;
@@ -42,6 +46,10 @@ class Router {
         if(!_auth.isLogged()) return MaterialPageRoute(builder: (_) => OpsScreen());
 
         return MaterialPageRoute(builder: (_) => CadastroAnimalScreen());
+      case cadastroAnimalSucess:
+        if(!_auth.isLogged()) return MaterialPageRoute(builder: (_) => OpsScreen());
+
+        return MaterialPageRoute(builder: (_) => CadastroAnimalSucessScreen());
       case loginRoute:
         // var data = settings.arguments as String;
         return MaterialPageRoute(builder: (_) => LogInScreen());
@@ -72,6 +80,10 @@ class Router {
         if(!_auth.isLogged()) return MaterialPageRoute(builder: (_) => OpsScreen());
         // var data = settings.arguments as String;
         return MaterialPageRoute(builder: (_) => NotificationScreen());
+      case adoption:
+        if(!_auth.isLogged()) return MaterialPageRoute(builder: (_) => OpsScreen());
+        // var data = settings.arguments as String;
+        return MaterialPageRoute(builder: (_) => AnimalsCardsList());
       default:
         // var data = settings.arguments as String;
         return MaterialPageRoute(builder: (_) => HomeScreen());

@@ -31,12 +31,12 @@ class AnimalService{
     try{
       if(_auth.isLogged() == true){
         animal.owner = _auth.loggedUser.documentID;
-        var newAnimal = await _collection.add(animal.toMap());
-        _userService.addPet(newAnimal.documentID);
-
-        return true;
+        DocumentReference newAnimal = await _collection.add(animal.toMap());
+        if(newAnimal.documentID != null){
+          _userService.addPet(newAnimal.documentID);
+          return true;
+        }
       }
-
       return false;
     }
     on AuthException catch (e) {
@@ -51,8 +51,14 @@ class AnimalService{
 
   void delete(String documentId) => _collection.document(documentId).delete();
 
-  Stream<List<Animal>> get people =>(
-    _collection.snapshots().map((query) => query.documents
+  Stream<List<Animal>> get animals =>(
+    _collection.where('owner', isGreaterThan: _auth.loggedUser.documentID, isLessThan: _auth.loggedUser.documentID).snapshots().map((query) => query.documents
+      .map<Animal>((document) => Animal.fromMap(document))
+      .toList())
+  );
+
+  Stream<List<Animal>> get myPets =>(
+    _collection.where('owner', isEqualTo: _auth.loggedUser.documentID).snapshots().map((query) => query.documents
       .map<Animal>((document) => Animal.fromMap(document))
       .toList())
   );

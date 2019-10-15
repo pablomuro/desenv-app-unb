@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
             ),
             SizedBox(height: 48.0),
             YellownFlatButton(
-              onPressed: () => null,
+              onPressed: () => Navigator.pushNamed(context, Router.adoption),
               text: 'Adotar',
             ),
             SizedBox(height: 12.0),

@@ -44,7 +44,7 @@ class CadastroAnimalFormState extends State<CadastroAnimalForm> {
       try{
         bool result = await _bloc.insertOrUpdate();
         if(result){
-          Navigator.pushNamed(context, Router.homeRoute); 
+          Navigator.pushNamed(context, Router.cadastroAnimalSucess); 
         }
       } on Exception catch (e) {
         dynamic error = e;
