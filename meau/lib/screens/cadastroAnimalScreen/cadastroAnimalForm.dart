@@ -26,13 +26,14 @@ class CadastroAnimalFormState extends State<CadastroAnimalForm> {
   @override
   void initState() {
     super.initState();
+    _bloc.setAnimal(new Animal());
+    _bloc.setImageStream(null);
   }
-
 
   Future getImage() async {
     File image = await ImagePicker.pickImage(source: ImageSource.gallery);
-    _bloc.setAnimalImage(image);
-    _bloc.setImageStream(image);
+    _bloc.setAnimalImage(image.readAsBytesSync());
+    _bloc.setImageStream(image.readAsBytesSync());
   }
 
   register() async {
@@ -41,8 +42,10 @@ class CadastroAnimalFormState extends State<CadastroAnimalForm> {
     if (form.validate()) {
       form.save();
       try{
-        _bloc.insertOrUpdate();
-        Navigator.pushNamed(context, Router.homeRoute); 
+        bool result = await _bloc.insertOrUpdate();
+        if(result){
+          Navigator.pushNamed(context, Router.homeRoute); 
+        }
       } on Exception catch (e) {
         dynamic error = e;
         return ErrorDialog.buildErrorDialog(context, error.message.message);
@@ -55,13 +58,6 @@ class CadastroAnimalFormState extends State<CadastroAnimalForm> {
     return 'Campo obrigatório';
   }
   return null;
-  }
-
-  String emailValidator(value){
-    var notNull = notNullValidator(value);
-    if(notNull != null) return notNull;
-
-    return 'Email inválido';
   }
 
   @override
@@ -79,17 +75,26 @@ class CadastroAnimalFormState extends State<CadastroAnimalForm> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [ 
                   RaisedButton(
-                    onPressed: () => null,
+                    onPressed: (){
+                      _bloc.setHelpAs(HelpAs.Adoption);
+                      _bloc.setAnimal(snapshot.data);
+                    },
                     child: Text('ADOÇÃO'),
                     color : DefaultYellowColor,
                   ),
                   RaisedButton(
-                    onPressed: () => null,
+                    onPressed: (){
+                      _bloc.setHelpAs(HelpAs.Sponsor);
+                      _bloc.setAnimal(snapshot.data);
+                    },
                     child: Text('APADRINHAR'),
                     color: DefaultYellowColor,
                   ),
                   RaisedButton(
-                    onPressed: () => null,
+                    onPressed: (){
+                      _bloc.setHelpAs(HelpAs.Help);
+                      _bloc.setAnimal(snapshot.data);
+                    },
                     child: Text('AJUDA'),
                     color : DefaultYellowColor,
                   )
@@ -110,8 +115,11 @@ class CadastroAnimalFormState extends State<CadastroAnimalForm> {
                 children: [
                     Flexible( child:
                       TextFormField(
-                      decoration: InputDecoration(   
-                        labelText: 'Nome do animal')
+                      decoration: InputDecoration(labelText: 'Nome do animal'),
+                      onChanged: (value){
+                        _bloc.setName(value);
+                        _bloc.setAnimal(snapshot.data);
+                      },
                     )
                   )
                     
@@ -131,7 +139,7 @@ class CadastroAnimalFormState extends State<CadastroAnimalForm> {
                           return Container(
                             width: 150.0,
                             height: 150.0,
-                            child: Image.file(snapshot.data)
+                            child: Image.memory(snapshot.data)
                           );
                         }
                         return Container(
@@ -227,7 +235,7 @@ class CadastroAnimalFormState extends State<CadastroAnimalForm> {
                           _bloc.setSex(value);
                           _bloc.setAnimal(snapshot.data);
                         },
-                        groupValue: snapshot.data.sex
+                        groupValue: snapshot.data.sex,
                       ),
                       Text('Fêmea')
                   ],
@@ -330,14 +338,20 @@ class CadastroAnimalFormState extends State<CadastroAnimalForm> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Checkbox(
-                      value: false,
-                      onChanged: (bool newValue) {
+                      value: _bloc.hasTemper(AnimalPropertiesLists.temper[0]),
+                      onChanged: (value) {
+                        String temper = AnimalPropertiesLists.temper[0];
+                        (value) ? _bloc.addTemper(temper) : _bloc.removeTemper(temper);
+                        _bloc.setAnimal(snapshot.data);
                       },
                     ),
                     Text("Brincalhão"),
                     Checkbox(
-                      value: false,
-                      onChanged: (bool newValue) {
+                      value: _bloc.hasTemper(AnimalPropertiesLists.temper[1]),
+                      onChanged: (value) {
+                        String temper = AnimalPropertiesLists.temper[1];
+                        (value) ? _bloc.addTemper(temper) : _bloc.removeTemper(temper);
+                        _bloc.setAnimal(snapshot.data);
                       },
                     ),
                     Text("Timido"),
@@ -348,14 +362,20 @@ class CadastroAnimalFormState extends State<CadastroAnimalForm> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Checkbox(
-                      value: false,
-                      onChanged: (bool newValue) {
+                      value: _bloc.hasTemper(AnimalPropertiesLists.temper[2]),
+                      onChanged: (value) {
+                        String temper = AnimalPropertiesLists.temper[2];
+                        (value) ? _bloc.addTemper(temper) : _bloc.removeTemper(temper);
+                        _bloc.setAnimal(snapshot.data);
                       },
                     ),
                     Text("Calmo"),
                     Checkbox(
-                      value: false,
-                      onChanged: (bool newValue) {
+                      value: _bloc.hasTemper(AnimalPropertiesLists.temper[3]),
+                      onChanged: (value) {
+                        String temper = AnimalPropertiesLists.temper[3];
+                        (value) ? _bloc.addTemper(temper) : _bloc.removeTemper(temper);
+                        _bloc.setAnimal(snapshot.data);
                       },
                     ),
                     Text("Guarda"),
@@ -366,14 +386,20 @@ class CadastroAnimalFormState extends State<CadastroAnimalForm> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Checkbox(
-                      value: false,
-                      onChanged: (bool newValue) {
+                      value: _bloc.hasTemper(AnimalPropertiesLists.temper[4]),
+                      onChanged: (value) {
+                        String temper = AnimalPropertiesLists.temper[4];
+                        (value) ? _bloc.addTemper(temper) : _bloc.removeTemper(temper);
+                        _bloc.setAnimal(snapshot.data);
                       },
                     ),
                     Text("Amoroso"),
                     Checkbox(
-                      value: false,
-                      onChanged: (bool newValue) {
+                      value: _bloc.hasTemper(AnimalPropertiesLists.temper[5]),
+                      onChanged: (value) {
+                        String temper = AnimalPropertiesLists.temper[5];
+                        (value) ? _bloc.addTemper(temper) : _bloc.removeTemper(temper);
+                        _bloc.setAnimal(snapshot.data);
                       },
                     ),
                     Text("Preguiçoso")
@@ -393,14 +419,20 @@ class CadastroAnimalFormState extends State<CadastroAnimalForm> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Checkbox(
-                      value: false,
-                      onChanged: (bool newValue) {
+                      value: _bloc.hasHealth(AnimalPropertiesLists.health[0]),
+                      onChanged: (value) {
+                        String health = AnimalPropertiesLists.health[0];
+                        (value) ? _bloc.addHealth(health) : _bloc.removeHealth(health);
+                        _bloc.setAnimal(snapshot.data);
                       },
                     ),
-                    Text("Vacinado "),
+                    Text("Vacinado"),
                     Checkbox(
-                      value: false,
-                      onChanged: (bool newValue) {
+                      value: _bloc.hasHealth(AnimalPropertiesLists.health[1]),
+                      onChanged: (value) {
+                        String health = AnimalPropertiesLists.health[1];
+                        (value) ? _bloc.addHealth(health) : _bloc.removeHealth(health);
+                        _bloc.setAnimal(snapshot.data);
                       },
                     ),
                     Text("Vermifugado"),
@@ -411,14 +443,20 @@ class CadastroAnimalFormState extends State<CadastroAnimalForm> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Checkbox(
-                      value: false,
-                      onChanged: (bool newValue) {
+                      value: _bloc.hasHealth(AnimalPropertiesLists.health[2]),
+                      onChanged: (value) {
+                        String health = AnimalPropertiesLists.health[2];
+                        (value) ? _bloc.addHealth(health) : _bloc.removeHealth(health);
+                        _bloc.setAnimal(snapshot.data);
                       },
                     ),
                     Text("Castrado"),
                     Checkbox(
-                      value: false,
-                      onChanged: (bool newValue) {
+                      value: _bloc.hasHealth(AnimalPropertiesLists.health[3]),
+                      onChanged: (value) {
+                        String health = AnimalPropertiesLists.health[3];
+                        (value) ? _bloc.addHealth(health) : _bloc.removeHealth(health);
+                        _bloc.setAnimal(snapshot.data);
                       },
                     ),
                     Text("Doente"),
@@ -430,8 +468,8 @@ class CadastroAnimalFormState extends State<CadastroAnimalForm> {
                 children: [
                     Flexible( child:
                       TextFormField(
-                      decoration: InputDecoration(   
-                        labelText: 'Doenças do animal')
+                      decoration: InputDecoration(labelText: 'Doenças do animal'),
+                      onSaved: (value){ if(value != null) _bloc.addHealth(value); },
                     )
                   )
                     
@@ -452,8 +490,11 @@ class CadastroAnimalFormState extends State<CadastroAnimalForm> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Checkbox(
-                      value: false,
-                      onChanged: (bool newValue) {
+                      value: _bloc.hasNeeds(AnimalPropertiesLists.needs[0]),
+                      onChanged: (value) {
+                        String need = AnimalPropertiesLists.needs[0];
+                        (value) ? _bloc.addNeeds(need) : _bloc.removeNeeds(need);
+                        _bloc.setAnimal(snapshot.data);
                       },
                     ),
                     Text("Termo de adoção"),
@@ -464,8 +505,11 @@ class CadastroAnimalFormState extends State<CadastroAnimalForm> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Checkbox(
-                      value: false,
-                      onChanged: (bool newValue) {
+                      value: _bloc.hasNeeds(AnimalPropertiesLists.needs[1]),
+                      onChanged: (value) {
+                        String need = AnimalPropertiesLists.needs[1];
+                        (value) ? _bloc.addNeeds(need) : _bloc.removeNeeds(need);
+                        _bloc.setAnimal(snapshot.data);
                       },
                     ),
                     Text("Fotos da casa"),
@@ -476,8 +520,11 @@ class CadastroAnimalFormState extends State<CadastroAnimalForm> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Checkbox(
-                      value: false,
-                      onChanged: (bool newValue) {
+                      value: _bloc.hasNeeds(AnimalPropertiesLists.needs[2]),
+                      onChanged: (value) {
+                        String need = AnimalPropertiesLists.needs[2];
+                        (value) ? _bloc.addNeeds(need) : _bloc.removeNeeds(need);
+                        _bloc.setAnimal(snapshot.data);
                       },
                     ),
                     Text("Visita prévia ao animal"),
@@ -488,8 +535,11 @@ class CadastroAnimalFormState extends State<CadastroAnimalForm> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Checkbox(
-                      value: false,
-                      onChanged: (bool newValue) {
+                      value: _bloc.hasNeeds(AnimalPropertiesLists.needs[3]),
+                      onChanged: (value) {
+                        String need = AnimalPropertiesLists.needs[3];
+                        (value) ? _bloc.addNeeds(need) : _bloc.removeNeeds(need);
+                        _bloc.setAnimal(snapshot.data);
                       },
                     ),
                     Text("Acompanhamento pós adoção"),
@@ -511,7 +561,7 @@ class CadastroAnimalFormState extends State<CadastroAnimalForm> {
                     Flexible( child:
                       TextFormField(
                         decoration: InputDecoration(labelText: 'Compartilhe sua história sobre o animal'),
-
+                        onChanged: (value){ _bloc.setAbout(value); },
                       )
                   )
                     
@@ -523,7 +573,7 @@ class CadastroAnimalFormState extends State<CadastroAnimalForm> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                     YellownFlatButton(
-                      onPressed: () => null,
+                      onPressed: register,
                       text: 'COLOCAR PARA ADOÇÃO',
                     ),
                 ],

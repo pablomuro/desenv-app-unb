@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meau/models/BaseModel.dart';
@@ -35,10 +34,8 @@ class User extends BaseModel{
     this.phone = document.data['phone'];
     this.username = document.data['username'];
     this.password = document.data['password'];
-    this.pets = document.data['pets'];
-    this.pets = this.pets.cast<String>();
-    this.petsHistory = document.data['petsHistory'];
-    this.petsHistory = this.petsHistory.cast<String>();
+    this.pets = new List<String>.from(document.data['pets']);
+    this.petsHistory = new List<String>.from(document.data['petsHistory']);
     this.profilePicture = document.data['profilePicture'];
     Uint8List bytes = base64.decode(this.profilePicture);
     this.profileImage = bytes;

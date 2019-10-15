@@ -7,8 +7,6 @@ import 'package:meau/services/AuthService.dart';
 class UserService{
   CollectionReference _collection = Firestore.instance.collection('users');
   static AuthService _auth;
-  static User currentUser;
-  
 
   static final UserService instance = UserService._internal();
 
@@ -57,6 +55,7 @@ class UserService{
   }
 
   void addPet(String petId){
+    _auth = AuthService.instance;
     _auth.loggedUser.pets.add(petId);
     _collection.document(_auth.loggedUser.documentID).updateData(_auth.loggedUser.toMap());
   }

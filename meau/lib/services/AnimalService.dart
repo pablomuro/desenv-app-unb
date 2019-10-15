@@ -27,13 +27,17 @@ class AnimalService{
     (query) => Animal.fromMap(query.documents[0])
   );
 
-  void add(Animal animal) async {
+  Future<bool>add(Animal animal) async {
     try{
-      if(_auth.isLogged() == false){
+      if(_auth.isLogged() == true){
         animal.owner = _auth.loggedUser.documentID;
         var newAnimal = await _collection.add(animal.toMap());
         _userService.addPet(newAnimal.documentID);
+
+        return true;
       }
+
+      return false;
     }
     on AuthException catch (e) {
       throw new AuthException(e.code, e.message);
@@ -42,7 +46,7 @@ class AnimalService{
     }
   } 
 
-  void update(String documentId, Animal animal) =>
+  Future<bool> update(String documentId, Animal animal) =>
       _collection.document(documentId).updateData(animal.toMap());
 
   void delete(String documentId) => _collection.document(documentId).delete();

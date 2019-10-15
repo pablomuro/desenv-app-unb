@@ -9,12 +9,10 @@ import 'package:meau/models/UserModel.dart';
 
 class ProfileScreen extends StatelessWidget {
 
-  User user = AuthService.instance.loggedUser;
-
-  
-  static const BottomSpace = 8.0;
   @override
   Widget build(BuildContext context) {
+    User user = AuthService.instance.loggedUser;
+
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: CustomAppBar(
