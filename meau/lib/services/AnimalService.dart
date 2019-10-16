@@ -52,13 +52,13 @@ class AnimalService{
   void delete(String documentId) => _collection.document(documentId).delete();
 
   Stream<List<Animal>> get animals =>(
-    _collection.where('owner', isGreaterThan: _auth.loggedUser.documentID, isLessThan: _auth.loggedUser.documentID).snapshots().map((query) => query.documents
+    _collection.where('owner', isGreaterThan: AuthService.instance.loggedUser.documentID, isLessThan: AuthService.instance.loggedUser.documentID).snapshots().map((query) => query.documents
       .map<Animal>((document) => Animal.fromMap(document))
       .toList())
   );
 
   Stream<List<Animal>> get myPets =>(
-    _collection.where('owner', isEqualTo: _auth.loggedUser.documentID).snapshots().map((query) => query.documents
+    _collection.where('owner', isEqualTo: AuthService.instance.loggedUser.documentID).snapshots().map((query) => query.documents
       .map<Animal>((document) => Animal.fromMap(document))
       .toList())
   );

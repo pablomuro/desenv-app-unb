@@ -10,7 +10,7 @@ class AnimalBloc extends BlocBase {
   Animal _animal = new Animal();
   Uint8List _image;
 
-  AnimalBloc() {
+  AnimalBloc(){
     _animalController.listen((value) => _animal = value);
     _imageController.listen((value) => _image = value);
     setAnimalStream(new Animal());

@@ -61,7 +61,7 @@ class _AppDrawerState extends State<AppDrawer> {
                     DrawerListItem(
                       text: 'Meus pets',
                       onTap: () {
-                        // Update the state of the app.
+                        Navigator.pushNamed(context, Router.myPets);
                       },
                     ),
                     DrawerListItem(
@@ -96,13 +96,13 @@ class _AppDrawerState extends State<AppDrawer> {
               DrawerListItem(
                 text: 'Cadastrar Pet',
                 onTap: () {
-                  // Update the state of the app.
+                  Navigator.pushNamed(context, Router.cadastroAnimal);
                 },
               ),
               DrawerListItem(
                 text: 'Adotar um pet',
                 onTap: () {
-                  // Update the state of the app.
+                  Navigator.pushNamed(context, Router.adoption);
                 },
               ),
               DrawerListItem(
