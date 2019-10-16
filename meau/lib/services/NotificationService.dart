@@ -18,7 +18,7 @@ class NotificationService{
 
   NotificationService._internal();
 
-  Stream<Notification> hasNotification(String _documentId)  => _collection.where('userTo', isEqualTo: _documentId).limit(1).snapshots().map(
+  Stream<Notification> hasNotification(String documentID)  => _collection.where('userTo', isEqualTo: documentID).limit(1).snapshots().map(
     (query) => Notification.fromMap(query.documents[0])
   );
 
@@ -35,10 +35,18 @@ class NotificationService{
     }
   }
 
-  // void addPet(String petId){
-  //   _auth.loggedUser.pets.add(petId);
-  //   _collection.document(_auth.loggedUser.documentID).updateData(_auth.loggedUser.toMap());
-  // }
+  Future<bool> sendNewNotification(String ownerId, String petId) async {
+    Notification newNotification = new Notification();
+    newNotification.userFrom = ownerId;
+    newNotification.userTo = currentUser.documentID;
+    newNotification.pet = petId;
+
+    newNotification.type = NotificationType.Request;
+    newNotification.seen = false;
+    newNotification.response = NotificationResponse.None;
+
+    return await this.add(newNotification);
+  }
 
   void update(String documentId, Notification notification) =>
       _collection.document(documentId).updateData(notification.toMap());

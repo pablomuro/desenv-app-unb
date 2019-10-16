@@ -26,9 +26,6 @@ class RegisterFormState extends State<RegisterForm> {
 
   @override
   void initState() {
-    var mock = new UserMock();
-    // TODO - remover mock
-    // _bloc.setUser(mock.user);
     super.initState();
   }
 

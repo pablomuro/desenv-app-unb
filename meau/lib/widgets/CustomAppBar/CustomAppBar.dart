@@ -7,14 +7,14 @@ class CustomAppBar extends AppBar{
   final Color backgroundColor;
   final Color iconThemeColor;
   final double elevation;
-  final List<Widget> actions;
+  List<Widget> customActions = [];
 
-  CustomAppBar({this.title, this.backgroundColor, this.iconThemeColor, this.elevation, this.actions})
+  CustomAppBar({this.title, this.backgroundColor, this.iconThemeColor, this.elevation , this.customActions})
   :super(
-    title:title,
+    title: title,
     backgroundColor: backgroundColor,
     iconTheme: IconThemeData(color:iconThemeColor),
     elevation: (elevation != null) ? elevation : 2,
-    actions: (actions != null) ? actions : [NotificationButton()],
+    actions: (customActions != null && customActions.isEmpty) ? null : [NotificationButton()],
   );
 }

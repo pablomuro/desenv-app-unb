@@ -17,8 +17,8 @@ class UserService{
 
   UserService._internal();
 
-  Stream<User> findById(String _documentId)  => _collection.where('_documentId', isEqualTo: _documentId).limit(1).snapshots().map(
-    (query) => User.fromMap(query.documents[0])
+  Stream<User> findById(String documentID)  => _collection.document(documentID).snapshots().map(
+    (document) => User.fromMap(document)
   );
   Stream<User> findByEmail(String email)  => _collection.where('email', isEqualTo: email).limit(1).snapshots().map(
     (query) => User.fromMap(query.documents[0])
@@ -64,11 +64,5 @@ class UserService{
       _collection.document(documentId).updateData(user.toMap());
 
   void delete(String documentId) => _collection.document(documentId).delete();
-
-  Stream<List<User>> get people =>(
-    _collection.snapshots().map((query) => query.documents
-      .map<User>((document) => User.fromMap(document))
-      .toList())
-  );
 
 }

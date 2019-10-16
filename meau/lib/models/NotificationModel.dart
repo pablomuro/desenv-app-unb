@@ -48,7 +48,6 @@ class Notification extends BaseModel{
 }
 
 enum NotificationType{
-  None,
   Request,
   Response
 }

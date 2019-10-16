@@ -61,6 +61,7 @@ class AnimalsCardsListState extends State<AnimalsCardsList> {
                       ),
                     ),
                     Container(
+                      constraints: BoxConstraints(maxHeight: 183.0),
                       child: Image.memory(animal.animalImage),
                     ),
                     Container(

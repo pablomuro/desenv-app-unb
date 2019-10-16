@@ -20,11 +20,12 @@ class AnimalService{
 
   AnimalService._internal();
 
-  Stream<Animal> findById(String _documentId)  => _collection.where('_documentId', isEqualTo: _documentId).limit(1).snapshots().map(
-    (query) => Animal.fromMap(query.documents[0])
+  Stream<Animal> findById(String documentID) => _collection.document(documentID).snapshots().map(
+    (document) => Animal.fromMap(document)
   );
-  Stream<Animal> findByOwnerId(String ownerId)  => _collection.where('owner', isEqualTo: ownerId).limit(1).snapshots().map(
-    (query) => Animal.fromMap(query.documents[0])
+  Stream<List<Animal>> findByOwnerId(String ownerId)  => _collection.where('owner', isEqualTo: ownerId).limit(1).snapshots().map((query) => query.documents
+    .map<Animal>((document) => Animal.fromMap(document))
+    .toList()
   );
 
   Future<bool>add(Animal animal) async {
@@ -52,9 +53,13 @@ class AnimalService{
   void delete(String documentId) => _collection.document(documentId).delete();
 
   Stream<List<Animal>> get animals =>(
-    _collection.where('owner', isGreaterThan: AuthService.instance.loggedUser.documentID, isLessThan: AuthService.instance.loggedUser.documentID).snapshots().map((query) => query.documents
-      .map<Animal>((document) => Animal.fromMap(document))
-      .toList())
+    _collection
+    .where('helpAs', isEqualTo: 0).snapshots().map((query) => query.documents
+      .where((document) => (document.data['owner'] != AuthService.instance.loggedUser.documentID) ?
+          true : false
+      ).map<Animal>((document) => Animal.fromMap(document))
+      .toList()
+    )
   );
 
   Stream<List<Animal>> get myPets =>(

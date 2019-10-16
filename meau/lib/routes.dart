@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meau/screens/animalDetailScreen/animalDetailScreen.dart';
+import 'package:meau/screens/animalDetailScreen/animalNotificationWarningScreen.dart';
 import 'package:meau/screens/cadastroAnimalScreen/cadastroAnimalSucess.dart';
 import 'package:meau/screens/homeScreen.dart';
 import 'package:meau/screens/legalScreen/legalScreen.dart';
@@ -35,6 +36,7 @@ class Router {
   static const String adoption = '/adoption';
   static const String myPets = '/myPets';
   static const String animalDetails = '/animalDetails';
+  static const String animalDetailsNotificationWarning = '/animalDetailsNotificationWarning';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
       AuthService _auth = AuthService.instance;
@@ -96,7 +98,11 @@ class Router {
         if(!_auth.isLogged()) return MaterialPageRoute(builder: (_) => OpsScreen());
 
         final dynamic data = settings.arguments;
-        return MaterialPageRoute(builder: (_) => AnimalsDetailScreen(appBarColor: data['appBarColor'], title: data['title'], screenType: data['screenType'], animalId: data['animalId']);
+        return MaterialPageRoute(builder: (_) => AnimalsDetailScreen(appBarColor: data['appBarColor'], title: data['title'], screenType: data['screenType'], animalId: data['animalId']));
+      case animalDetailsNotificationWarning:
+      if(!_auth.isLogged()) return MaterialPageRoute(builder: (_) => OpsScreen());
+
+      return MaterialPageRoute(builder: (_) => AnimalNotificationWarningScreen());
       default:
         // var data = settings.arguments as String;
         return MaterialPageRoute(builder: (_) => HomeScreen());

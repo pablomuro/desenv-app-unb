@@ -5,15 +5,25 @@ import 'package:meau/routes.dart';
 import 'package:meau/services/AuthService.dart';
 import 'package:meau/services/NotificationService.dart';
 
-class NotificationButton extends StatelessWidget {
+class NotificationButton extends StatefulWidget {
+
+  @override
+  NotificationButtonState createState() {
+    return NotificationButtonState();
+  }
+}
+
+class NotificationButtonState extends State<NotificationButton> {
+
+  User _user = AuthService.instance.loggedUser;
+  NotificationService notificationService = NotificationService.instance;
+  
 
   @override
   Widget build(BuildContext context) {
-    User _user = AuthService.instance.loggedUser;
-
     if(_user != null){
       return StreamBuilder<Notify.Notification>(
-        stream: NotificationService.instance.hasNotification(_user.documentID),
+        stream: notificationService.hasNotification(_user.documentID),
         builder: (context, snapshot) {
           if(!snapshot.hasData) return Container();
           return IconButton(

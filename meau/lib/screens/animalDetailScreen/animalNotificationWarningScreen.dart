@@ -1,24 +1,26 @@
+
 import 'package:flutter/material.dart';
 import 'package:meau/routes.dart';
-import 'package:meau/screens/cadastroAnimalScreen/texts.dart';
 import 'package:meau/style.dart';
 import 'package:meau/widgets/AppDrawer/AppDrawer.dart';
 import 'package:meau/widgets/CustomAppBar/CustomAppBar.dart';
 import 'package:meau/widgets/YellownFlatButton.dart';
 
-class CadastroAnimalSucessScreen extends StatelessWidget {
+
+class AnimalNotificationWarningScreen extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: CustomAppBar(
-            title: Text('Cadastro Animal',
+          backgroundColor: DefaultGrennColor,
+          elevation: 0,
+          iconThemeColor: DefaultButtonColor,
+          title: Text('Adotar',
               style: TextStyle(
               color: DefaultButtonColor, fontSize: AppTitleTextSize)
-            ),
-            backgroundColor: DefaultYellowColor,
-            elevation: 2,
-            iconThemeColor: DefaultButtonColor
+            )
         ),
         drawer: AppDrawer(),
         body: ListView(
@@ -30,12 +32,11 @@ class CadastroAnimalSucessScreen extends StatelessWidget {
                 SizedBox(height: 52.0),
                 Text('Eba!', style: TextWelcomeStyle),
                 SizedBox(height: 52.0),
-                Text(Sucess),
-                Text(VerifyNotifications),
+                Text('Uma notificação foi enviada para o dono do animal, fique no aguardo da resposta'),
                 SizedBox(height: 100.0),
                 YellownFlatButton(
-                  text:'Meus Pets',
-                  onPressed: () => Navigator.pushNamed(context, Router.myPets),
+                  text:'Voltar para Home',
+                  onPressed: () => Navigator.pushNamed(context, Router.homeRoute),
                 )
               ],
             )
