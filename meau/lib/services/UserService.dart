@@ -60,8 +60,8 @@ class UserService{
     _collection.document(_auth.loggedUser.documentID).updateData(_auth.loggedUser.toMap());
   }
 
-  void update(String documentId, User user) =>
-      _collection.document(documentId).updateData(user.toMap());
+  Future<void> update(User user) =>
+      _collection.document(user.documentID).updateData(user.toMap());
 
   void delete(String documentId) => _collection.document(documentId).delete();
 

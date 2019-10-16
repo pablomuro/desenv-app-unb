@@ -49,7 +49,7 @@ class UserBloc extends BlocBase {
         bool retorno = await _repository.add(_user);
         return retorno;
       } else {
-        _repository.update(_user.documentID, _user);
+        _repository.update(_user);
       }
       return true;
     } on Exception catch (e){

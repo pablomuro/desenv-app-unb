@@ -36,9 +36,9 @@ class Notification extends BaseModel{
     map['userTo'] = this.userTo;
     map['userFrom'] = this.userFrom;
     map['pet'] = this.pet;
-    map['type'] = this.type;
+    map['type'] = this.type.index;
     map['seen'] = this.seen;
-    map['response'] = this.response;
+    map['response'] = this.response.index;
 
     return map;
   }

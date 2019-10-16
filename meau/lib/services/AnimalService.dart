@@ -47,14 +47,14 @@ class AnimalService{
     }
   } 
 
-  Future<bool> update(String documentId, Animal animal) =>
-      _collection.document(documentId).updateData(animal.toMap());
+  Future<void> update(Animal animal) =>
+      _collection.document(animal.documentID).updateData(animal.toMap());
 
   void delete(String documentId) => _collection.document(documentId).delete();
 
   Stream<List<Animal>> get animals =>(
     _collection
-    .where('helpAs', isEqualTo: 0).snapshots().map((query) => query.documents
+    .where('helpAs', isEqualTo: HelpAs.Adoption.index).snapshots().map((query) => query.documents
       .where((document) => (document.data['owner'] != AuthService.instance.loggedUser.documentID) ?
           true : false
       ).map<Animal>((document) => Animal.fromMap(document))

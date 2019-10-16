@@ -63,7 +63,8 @@ class AnimalBloc extends BlocBase {
       if (_animal.documentID?.isEmpty ?? true) {
         return await _repository.add(_animal);
       } else {
-        return await _repository.update(_animal.documentID, _animal);
+        await _repository.update(_animal);
+        return true;
       }
     } on AuthException catch (e) {
       throw new AuthException(e.code, e.message);

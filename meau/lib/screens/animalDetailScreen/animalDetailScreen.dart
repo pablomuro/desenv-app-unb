@@ -94,12 +94,12 @@ class AnimalsDetailScreenState extends State<AnimalsDetailScreen> {
                         ),
                       ],
                     ),
-                    (widget.screenType == ScrenType.MyPets)?
+                    (widget.screenType != ScrenType.MyPets)?
                       YellownFlatButton(
                         text: 'Pretendo Adotar',
-                        onPressed: () => sendNotification(animal.documentID, animal.owner),
+                        onPressed: () => sendNotification(animal.owner, animal.documentID),
                       )
-                      : null
+                      : Container()
                   ],
                 ),
               ),

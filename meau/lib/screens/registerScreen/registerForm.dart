@@ -5,7 +5,6 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:meau/blocs/UserBloc.dart';
-import 'package:meau/models/UserMock.dart';
 import 'package:meau/models/UserModel.dart';
 import 'package:meau/widgets/errorDialog.dart';
 import 'package:meau/routes.dart';

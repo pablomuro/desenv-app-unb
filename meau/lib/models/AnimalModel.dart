@@ -99,6 +99,7 @@ class AnimalPropertiesLists{
 }
 
 enum HelpAs{
+  None,
   Adoption,
   Sponsor,
   Help

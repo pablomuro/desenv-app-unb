@@ -1,11 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:meau/models/AnimalModel.dart';
 import 'package:meau/models/NotificationModel.dart';
 import 'package:meau/models/UserModel.dart';
+import 'package:meau/services/AnimalService.dart';
 import 'package:meau/services/AuthService.dart';
+import 'package:meau/services/UserService.dart';
 
 class NotificationService{
   CollectionReference _collection = Firestore.instance.collection('notifications');
   static AuthService _auth = AuthService.instance;
+  static UserService userService = UserService.instance;
+  static AnimalService animaService = AnimalService.instance;
   static User currentUser;
 
   static final NotificationService instance = NotificationService._internal();
@@ -24,7 +29,7 @@ class NotificationService{
 
   Future<bool> add(Notification notification) async {
     try{
-      if(currentUser != null){
+      if(_auth.loggedUser != null){
         _collection.add(notification.toMap());
         return true;
       }
@@ -37,8 +42,8 @@ class NotificationService{
 
   Future<bool> sendNewNotification(String ownerId, String petId) async {
     Notification newNotification = new Notification();
-    newNotification.userFrom = ownerId;
-    newNotification.userTo = currentUser.documentID;
+    newNotification.userFrom = _auth.loggedUser.documentID;
+    newNotification.userTo = ownerId;
     newNotification.pet = petId;
 
     newNotification.type = NotificationType.Request;
@@ -48,8 +53,44 @@ class NotificationService{
     return await this.add(newNotification);
   }
 
-  void update(String documentId, Notification notification) =>
-      _collection.document(documentId).updateData(notification.toMap());
+  Future<bool> processAcept(Notification notification) async {
+    User newOwner = await userService.findById(notification.userFrom).first;
+    Animal pet = await animaService.findById(notification.pet).first;
+
+    newOwner.pets.add(pet.documentID);
+    pet.owner = newOwner.documentID;
+    pet.helpAs = HelpAs.None;
+
+    _auth.loggedUser.pets.remove(pet.documentID);
+    _auth.loggedUser.petsHistory.add(pet.documentID);
+
+    userService.update(newOwner);
+    animaService.update(pet);
+    userService.update(_auth.loggedUser);
+
+    notification.response = NotificationResponse.Accept;
+    notification.type = NotificationType.Response;
+    notification.userTo = newOwner.documentID;
+    notification.userFrom = _auth.loggedUser.documentID;
+    
+    this.update(notification);
+
+    return true;
+  }
+
+  Future<bool> processDeny(Notification notification) async {
+    notification.response = NotificationResponse.Deny;
+    notification.type = NotificationType.Response;
+    notification.userTo = notification.userFrom;
+    notification.userFrom = _auth.loggedUser.documentID;
+    
+    this.update(notification);
+
+    return true;
+  }
+
+  void update(Notification notification) =>
+      _collection.document(notification.documentID).updateData(notification.toMap());
 
   void delete(String documentId) => _collection.document(documentId).delete();
 
