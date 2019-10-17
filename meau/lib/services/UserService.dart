@@ -31,7 +31,7 @@ class UserService{
   Future<bool> add(User user) async {
     try{
      FirebaseUser firebaseUser = await _auth.createUser(email: user.email, password: user.password);
-     if(firebaseUser?.uid != null){
+     if(firebaseUser?.email != null){
         user.pets = new List<String>();
         user.petsHistory = new List<String>();
         _collection.add(user.toMap());
