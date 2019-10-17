@@ -23,6 +23,8 @@ class CadastroAnimalFormState extends State<CadastroAnimalForm> {
   final _formKey = GlobalKey<FormState>();
   final _bloc = BlocProvider.getBloc<AnimalBloc>();
 
+  var adotarButton = false;
+
   @override
   void initState() {
     super.initState();
@@ -78,9 +80,12 @@ class CadastroAnimalFormState extends State<CadastroAnimalForm> {
                     onPressed: (){
                       _bloc.setHelpAs(HelpAs.Adoption);
                       _bloc.setAnimal(snapshot.data);
+                      setState(() {
+                        adotarButton = !adotarButton;
+                      });
                     },
                     child: Text('ADOÇÃO'),
-                    color : DefaultYellowColor,
+                    color : (adotarButton)? DefaultYellowColor :Colors.grey,
                   ),
                   RaisedButton(
                     onPressed: (){
@@ -88,7 +93,7 @@ class CadastroAnimalFormState extends State<CadastroAnimalForm> {
                       _bloc.setAnimal(snapshot.data);
                     },
                     child: Text('APADRINHAR'),
-                    color: DefaultYellowColor,
+                    color : Colors.grey,
                   ),
                   RaisedButton(
                     onPressed: (){
@@ -96,7 +101,7 @@ class CadastroAnimalFormState extends State<CadastroAnimalForm> {
                       _bloc.setAnimal(snapshot.data);
                     },
                     child: Text('AJUDA'),
-                    color : DefaultYellowColor,
+                    color : Colors.grey,
                   )
                 ],
               ),
